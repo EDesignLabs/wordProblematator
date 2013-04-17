@@ -6,7 +6,7 @@ void testApp::setup(){
 	ofxAccelerometer.setup();
 	
 	//If you want a landscape oreintation 
-	iPhoneSetOrientation(OFXIPHONE_ORIENTATION_PORTRAIT);
+	iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_LEFT);
 	
     verdana12.loadFont("verdana.ttf", 12, true, true);
     verdana12.setLineHeight(24.0f);
@@ -34,7 +34,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	
-    ofBackground(100, 100, 100);
+    ofBackground(255, 255, 255);
     theNav.draw(verdana12);
     
 }

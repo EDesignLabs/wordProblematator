@@ -10,7 +10,6 @@
 
 
 #include "ofMain.h"
-#include "ofxUI.h"
 #include "drawing.h"
 #include "image.h"
 #include "text.h"
@@ -42,10 +41,6 @@ class mathOne {
         image thisImage;
         text* thisText;
 
-        bool doText;
-        bool doDrawing;
-        bool doImage;
-    
         char eventString[255];
         char timeString[255];
     
@@ -53,10 +48,21 @@ class mathOne {
         string theText;
     
         //UI
-        ofxUICanvas *gui;
-        void guiEvent(ofxUIEventArgs &e);
+        ofImage*     pencil;
+        ofImage*     font;
+        ofImage*     table;
+        ofImage*     okSave;
 
+        ofRectangle* pencilBox;
+        ofRectangle* fontBox;
+        ofRectangle* tableBox;
+        ofRectangle* okSaveBox;
     
+        bool*   pencilSelected;
+        bool*   fontSelected;
+        bool*   tableSelected;
+        bool*   okSaveSelected;
+
 };
 
 #endif

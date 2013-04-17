@@ -4,7 +4,6 @@
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
 
-#include "ofxBox2d.h"
 #include "nav.h"
 
 class testApp : public ofxiPhoneApp{
