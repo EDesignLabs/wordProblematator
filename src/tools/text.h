@@ -10,7 +10,6 @@
 
 
 #include "ofMain.h"
-#include "ofxBox2d.h"
 
 class text {
 	

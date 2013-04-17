@@ -24,16 +24,16 @@ text::text() {
     printf(" text setup started \n");
 
     
-    valueOne = "each week was double the number of cells at the end of the previous week.";
-    posOne.set(65, 88);
+    valueOne = "25 dimes";
+    posOne.set(268.5, 39.5);
     
-    valueTwo = "After week 1, there were 15.";
-    posTwo.set(40, 111);
+    valueTwo = "putting an odd number of dimes";
+    posTwo.set(184, 63);
     
-    valueThree = "After week 2, there were 30.";
+    valueThree = "how many ways could she do this?";
     posThree.set(40, 136);
     
-    valueFour = "After week 3, there were 60.";
+    valueFour = "";
     posFour.set(40, 160);
     
     printf(" text setup ended \n");
