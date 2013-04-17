@@ -15,6 +15,22 @@ mathOne::~mathOne() {
     thisImage.reset();
     exit();
     delete thisText;
+
+    //UI elements
+    delete pencil;
+    delete font;
+    delete table;
+    delete okSave;
+    delete pencilBox;
+    delete fontBox;
+    delete tableBox;
+    delete okSaveBox;
+
+    delete pencilSelected;
+    delete fontSelected;
+    delete tableSelected;
+    delete okSaveSelected;
+    
 }
 
 
@@ -28,27 +44,38 @@ mathOne::mathOne() {
     thisImage.setup();
     thisText = new text();
     
-    gui = new ofxUICanvas(10,ofGetHeight()/3+5,320,120);
-
-    vector<string> vnames;
-    vnames.push_back("Text");
-    vnames.push_back("Draw");
-    vnames.push_back("Image");
-    gui->addLabel("Select Tool", OFX_UI_FONT_MEDIUM);
-    ofxUIRadio *radio = gui->addRadio("VR", vnames, OFX_UI_ORIENTATION_VERTICAL);
-    radio->activateToggle("Text");
-
-    gui->autoSizeToFitWidgets();
-    ofAddListener(gui->newGUIEvent,this,&mathOne::guiEvent);
+    //load UI images
+    pencil = new ofImage;
+    font = new ofImage;
+    table = new ofImage;
+    okSave = new ofImage;
     
-    gui->setColorBack(ofColor(255,100));
-    gui->setWidgetColor(OFX_UI_WIDGET_COLOR_BACK, ofColor(255,100));
+    pencil->loadImage("images/ui/glyphicons_030_pencil.png");
+    font->loadImage("images/ui/glyphicons_100_font.png");
+    table->loadImage("images/ui/glyphicons_119_table.png");
+    okSave->loadImage("images/ui/glyphicons_206_ok_2.png");
+    
+    //set initial values for state
+    pencilSelected = new bool;
+    fontSelected = new bool;
+    tableSelected = new bool;
+    okSaveSelected = new bool;
+    
+    *pencilSelected = true;
+    *fontSelected = false;
+    *tableSelected = false;
+    *okSaveSelected = false;
 
-    doText      = true;
-    doDrawing   = false;
-    doImage     = false;
-
-    theText = "In a cellular regeneration experiment, Jaydon Laboratory found that for cells\nput in containers with a particular growth medium, the number of cells at the end\nof each week was double the number of cells at the end of the previous week.\nAfter week 1, there were 15.\nAfter week 2, there were 30.\nAfter week 3, there were 60.\nHow many cells were there after 7 weeks?";
+    pencilBox = new ofRectangle;
+    fontBox = new ofRectangle;
+    tableBox = new ofRectangle;
+    okSaveBox = new ofRectangle;
+    pencilBox->set(0, 300, pencil->getWidth()+20, pencil->getHeight()+20);
+    fontBox->set(0, 345, pencil->getWidth()+20, pencil->getHeight()+20);
+    tableBox->set(0, 390, pencil->getWidth()+20, pencil->getHeight()+20);
+    okSaveBox->set(0, 435, pencil->getWidth()+20, pencil->getHeight()+20);
+    
+    theText = "Nick's daughter Penny has 25 dimes. She likes to arrange them\ninto three piles, putting an odd number of dimes into each pile. In\nhow many ways could she do this?\nSolve this problem before continuing. ";
 
     
 }
@@ -58,7 +85,7 @@ mathOne::mathOne() {
 //------------------------------------------------------------------
 void mathOne::update() {
 
-    if (doText) {
+    if (*fontSelected) {
         thisText->update();
     }
 
@@ -74,21 +101,42 @@ void mathOne::draw(ofTrueTypeFont& basicFont) {
     
     sprintf (timeString, "time: %0.2i:%0.2i:%0.2i \nelapsed time %i", ofGetHours(), ofGetMinutes(), ofGetSeconds(), ofGetElapsedTimeMillis());
 	
-    ofSetHexColor(0xffffff);
+    ofSetHexColor(0x000000);
 	basicFont.drawString(timeString, 10,ofGetHeight()-90);
 	basicFont.drawString(eventString, 10,ofGetHeight()-20);
     
     ofEnableAlphaBlending();
     
-    if (doText) {
+    ofSetColor(170, 170, 170);
+    ofRect(*pencilBox);
+    ofRect(*fontBox);
+    ofRect(*tableBox);
+    ofRect(*okSaveBox);
+    
+    ofSetHexColor(0x000000);
+
+    pencil->draw(10, 310);
+    font->draw(10, 355);
+    table->draw(10, 400);
+    okSave->draw(10, 445);
+
+    if (*fontSelected) {
         basicFont.drawString(theText, 40, 40);
         thisText->draw(basicFont);
+        basicFont.drawString("text selected", ofGetWidth()/2,ofGetHeight()/3);
+        
+        for (int i = 0; i < drawThese.size(); i++) {
+            drawThese[i].draw();
+        }
+
     }
     
-    if (doDrawing) {
+    if (*pencilSelected) {
 
         basicFont.drawString(theText, 40, 40);
-    
+        thisText->draw(basicFont);
+        basicFont.drawString("pencil selected", ofGetWidth()/2,ofGetHeight()/3);
+        
         for (int i = 0; i < drawThese.size(); i++) {
             drawThese[i].draw();
         }
@@ -100,11 +148,25 @@ void mathOne::draw(ofTrueTypeFont& basicFont) {
         }
     }
     
-    if (doImage) {
+    if (*tableSelected) {
         basicFont.drawString(theText, 40, 40);
-        thisImage.draw();
+        thisText->draw(basicFont);
+        for (int i = 0; i < drawThese.size(); i++) {
+            drawThese[i].draw();
+        }
+        basicFont.drawString("table selected", ofGetWidth()/2,ofGetHeight()/3);
     }
-    
+
+    if (*okSaveSelected) {
+        basicFont.drawString(theText, 40, 40);
+        thisText->draw(basicFont);
+        for (int i = 0; i < drawThese.size(); i++) {
+            drawThese[i].draw();
+        }
+
+        basicFont.drawString("ok save selected", ofGetWidth()/2,ofGetHeight()/3);
+    }
+
     
     ofDisableAlphaBlending();
 
@@ -115,12 +177,12 @@ void mathOne::touchingDown(ofTouchEventArgs &touch) {
 
     sprintf(eventString, "touchDown = (%2.0f, %2.0f - id %i)", touch.x, touch.y, touch.id);
     
-    if (doText) {
+    if (*fontSelected) {
         thisText->touchingDown(touch);
     }
 
     
-    if (doDrawing) {
+    if (*pencilSelected) {
 
         ofPoint currentPos;
         currentPos.x = touch.x;
@@ -138,11 +200,11 @@ void mathOne::touchingMove(ofTouchEventArgs &touch) {
 
     sprintf(eventString, "touchMoved = (%2.0f, %2.0f - id %i)", touch.x, touch.y, touch.id);
     
-    if (doText) {
+    if (*fontSelected) {
         thisText->touchingMove(touch);
     }
     
-    if (doDrawing) {
+    if (*pencilSelected) {
         ofPoint currentPos;
         currentPos.x = touch.x;
         currentPos.y = touch.y;
@@ -160,17 +222,55 @@ void mathOne::touchingUp(ofTouchEventArgs &touch) {
 
  	sprintf(eventString, "touchUp = (%2.0f, %2.0f - id %i)",touch.x, touch.y, touch.id);
     
-    if (doText) {
+    if (*fontSelected) {
         thisText->touchingUp(touch);
     }
 
-    if (doDrawing) {
+    if (*pencilSelected) {
         currentDrawing.clear();
         drawThese.push_back(thisDrawing);
         thisDrawing.reset();
     }
+    
+    //figures out if something was selected
+    if (fontBox->inside(touch.x, touch.y)) {
+        //use draw tool
+        *fontSelected = true;
+        *pencilSelected = false;
+        *tableSelected = false;
+        *okSaveSelected = false;
+        printf(" Font gui task called \n");
+    }
+    
+    if (pencilBox->inside(touch.x, touch.y)) {
+        //use draw tool
+        *fontSelected = false;
+        *pencilSelected = true;
+        *tableSelected = false;
+        *okSaveSelected = false;
+        printf(" Pencil gui task called \n");
+    }
 
+    if (tableBox->inside(touch.x, touch.y)) {
+        //use image tool
+        printf(" Table gui task called \n");
+        *fontSelected = false;
+        *pencilSelected = false;
+        *tableSelected = true;
+        *okSaveSelected = false;
+    }
+
+    if (okSaveBox->inside(touch.x, touch.y)) {
+        //use image tool
+        printf(" Save gui task called \n");
+        *fontSelected = false;
+        *pencilSelected = false;
+        *tableSelected = false;
+        *okSaveSelected = true;
+    }
+    
 }
+
 
 //------------------------------------------------------------------
 void mathOne::doubleTap(ofTouchEventArgs &touch) {
@@ -179,47 +279,8 @@ void mathOne::doubleTap(ofTouchEventArgs &touch) {
 }
 
 //--------------------------------------------------------------
-void mathOne::guiEvent(ofxUIEventArgs &e) {
-	string name = e.widget->getName();
-	int kind = e.widget->getKind();
-
-    if(kind == OFX_UI_WIDGET_TOGGLE) {
-        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        cout << name << "\t value: " << toggle->getValue() << endl;
-
-        if (name == "Text") {
-            //use draw tool
-            doText = true;
-            doDrawing = false;
-            doImage = false;
-            printf(" Text gui task called \n");
-        }
-
-        if (name == "Draw") {
-            //use draw tool
-            doText = false;
-            doDrawing = true;
-            doImage = false;
-            printf(" Drawing gui task called \n");
-        }
-
-        else if (name == "Image") {
-            //use image tool
-            printf(" Image gui task called \n");
-            doText = false;
-            doDrawing = false;
-            doImage = true;
-        }
-
-    }
-
-}
-
-
-//--------------------------------------------------------------
 void mathOne::exit() {
 
-    delete gui;
 
 }
 

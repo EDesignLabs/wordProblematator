@@ -25,7 +25,7 @@ void image::setup() {
     
     theImage = new ofImage;
     
-    theImage->loadImage("images/cells.png");
+    theImage->loadImage("images/dimes.jpg");
     
     printf(" image setup started \n");
 
