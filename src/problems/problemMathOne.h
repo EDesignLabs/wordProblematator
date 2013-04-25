@@ -1,25 +1,26 @@
 /*
- *  exercises.h
+ *  problemMathOne.h
  *
- *  Created by Ryan Raffa on 4/8/13.
+ *  Created by Ryan Raffa on 4/25/13.
  *
  */
 
-#ifndef _exercises
-#define _exercises
+#ifndef _problemMathOne
+#define _problemMathOne
 
 
 #include "ofMain.h"
 
-//#include "exerciseFrame.h"
-#include "ui.h"
+#include "uiCreate.h"
+#include "uiReflect.h"
+#include "uiPresent.h"
 
-class exercises {
+class problemMathOne {
 	
 	public:
         
-        exercises();
-        ~exercises();
+        problemMathOne();
+        ~problemMathOne();
     
         void update();
 		void draw(ofTrueTypeFont& basicFont);
@@ -38,8 +39,9 @@ class exercises {
 //-----------------------------------------------    
 //Math Problems
     
-        ui* problemOne;
-
+        uiCreate* create;
+        uiReflect* reflect;
+        uiPresent* present;
         
 };
 

@@ -12,7 +12,7 @@
 class button {
 	
 public:
-    void setup(ofTrueTypeFont& basicFont, ofPoint pos, ofPoint size, string thisString);
+    void setup(ofTrueTypeFont& basicFont, ofPoint pos, ofPoint size, string thisString, ofColor thisColor);
     void update();
     void draw();
     
@@ -24,6 +24,9 @@ public:
     
     //buttons
     ofRectangle    thisRectangle;
+    
+    //button color
+    ofColor        thisColor;
     
     //text for buttons
     ofTrueTypeFont* basicFont;                           //  Font used. May need to address alternative sizes.
