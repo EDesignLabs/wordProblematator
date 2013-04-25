@@ -24,26 +24,7 @@ class text {
         void touchingMove(ofTouchEventArgs &touch);
         void touchingUp(ofTouchEventArgs &touch);
 
-    
-        string valueOne;
-        ofPoint posOne;
-    
-        string valueTwo;
-        ofPoint posTwo;
-    
-        string valueThree;
-        ofPoint posThree;
-    
-        string valueFour;
-        ofPoint posFour;
-    
-        bool insideOne;
-        bool insideTwo;
-        bool insideThree;
-        bool insideFour;
-    
         ofTrueTypeFont verdana16;
-
 
 };
 

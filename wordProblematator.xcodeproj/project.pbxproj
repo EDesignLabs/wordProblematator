@@ -27,6 +27,9 @@
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
 		E4D8936F11527B74007E1F53 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* testApp.mm */; };
 		EC0B146E1714F4E8006DDB40 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0B146C1714F4E8006DDB40 /* image.cpp */; };
+		EC308C0617274A3600E0F06F /* ofxEasyRetina.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0017274A3600E0F06F /* ofxEasyRetina.mm */; };
+		EC308C0717274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0217274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm */; };
+		EC308C0817274A3600E0F06F /* ofxRetinaTrueTypeFont.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0517274A3600E0F06F /* ofxRetinaTrueTypeFont.mm */; };
 		EC3113FE171F3893001D2F35 /* EDesignLabLogo72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3113FD171F3893001D2F35 /* EDesignLabLogo72x72.png */; };
 		EC311400171F389B001D2F35 /* EDesignLabLogo144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3113FF171F389B001D2F35 /* EDesignLabLogo144x144.png */; };
 		EC31140C171F3940001D2F35 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */; };
@@ -34,7 +37,7 @@
 		EC882AC0170F168D00B41AB6 /* nav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC882AB9170F168D00B41AB6 /* nav.cpp */; };
 		EC882AC5170F16FD00B41AB6 /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC882AC3170F16FD00B41AB6 /* button.cpp */; };
 		EC9D031E1713312200591838 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D031C1713312200591838 /* drawing.cpp */; };
-		EC9D032517133B9A00591838 /* mathOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D032317133B9A00591838 /* mathOne.cpp */; };
+		EC9D032517133B9A00591838 /* ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D032317133B9A00591838 /* ui.cpp */; };
 		EC9D032917133D6900591838 /* exercises.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D032717133D6900591838 /* exercises.cpp */; };
 		ECCFA4A41715F2EB00C04311 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECCFA4A21715F2EB00C04311 /* text.cpp */; };
 		ECDA3AD01714D4DD000036C2 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3AC91714D4DD000036C2 /* tinyxml.cpp */; };
@@ -85,6 +88,12 @@
 		E4D8936D11527B74007E1F53 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = testApp.mm; path = src/testApp.mm; sourceTree = SOURCE_ROOT; };
 		EC0B146C1714F4E8006DDB40 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = src/tools/image.cpp; sourceTree = SOURCE_ROOT; };
 		EC0B146D1714F4E8006DDB40 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = image.h; path = src/tools/image.h; sourceTree = SOURCE_ROOT; };
+		EC308BFF17274A3600E0F06F /* ofxEasyRetina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyRetina.h; sourceTree = "<group>"; };
+		EC308C0017274A3600E0F06F /* ofxEasyRetina.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxEasyRetina.mm; sourceTree = "<group>"; };
+		EC308C0117274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ofxiOSEAGLView+retinaPatch.h"; sourceTree = "<group>"; };
+		EC308C0217274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ofxiOSEAGLView+retinaPatch.mm"; sourceTree = "<group>"; };
+		EC308C0417274A3600E0F06F /* ofxRetinaTrueTypeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRetinaTrueTypeFont.h; sourceTree = "<group>"; };
+		EC308C0517274A3600E0F06F /* ofxRetinaTrueTypeFont.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxRetinaTrueTypeFont.mm; sourceTree = "<group>"; };
 		EC3113FD171F3893001D2F35 /* EDesignLabLogo72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EDesignLabLogo72x72.png; sourceTree = "<group>"; };
 		EC3113FF171F389B001D2F35 /* EDesignLabLogo144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EDesignLabLogo144x144.png; sourceTree = "<group>"; };
 		EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
@@ -95,8 +104,8 @@
 		EC882AC4170F16FD00B41AB6 /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
 		EC9D031C1713312200591838 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = drawing.cpp; path = src/tools/drawing.cpp; sourceTree = SOURCE_ROOT; };
 		EC9D031D1713312200591838 /* drawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = drawing.h; path = src/tools/drawing.h; sourceTree = SOURCE_ROOT; };
-		EC9D032317133B9A00591838 /* mathOne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mathOne.cpp; sourceTree = "<group>"; };
-		EC9D032417133B9A00591838 /* mathOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mathOne.h; sourceTree = "<group>"; };
+		EC9D032317133B9A00591838 /* ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui.cpp; sourceTree = "<group>"; };
+		EC9D032417133B9A00591838 /* ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui.h; sourceTree = "<group>"; };
 		EC9D032717133D6900591838 /* exercises.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exercises.cpp; sourceTree = "<group>"; };
 		EC9D032817133D6900591838 /* exercises.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exercises.h; sourceTree = "<group>"; };
 		ECCFA4A21715F2EB00C04311 /* text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = text.cpp; path = src/tools/text.cpp; sourceTree = SOURCE_ROOT; };
@@ -189,6 +198,8 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				EC308BFE17274A3600E0F06F /* ofxEasyRetina */,
+				EC308C0317274A3600E0F06F /* ofxRetinaTrueTypeFont */,
 				ECDA3AC71714D4DD000036C2 /* ofxXmlSettings */,
 			);
 			name = addons;
@@ -235,6 +246,28 @@
 			path = src;
 			sourceTree = SOURCE_ROOT;
 		};
+		EC308BFE17274A3600E0F06F /* ofxEasyRetina */ = {
+			isa = PBXGroup;
+			children = (
+				EC308BFF17274A3600E0F06F /* ofxEasyRetina.h */,
+				EC308C0017274A3600E0F06F /* ofxEasyRetina.mm */,
+				EC308C0117274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.h */,
+				EC308C0217274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm */,
+			);
+			name = ofxEasyRetina;
+			path = ../../../addons/ofxEasyRetina;
+			sourceTree = "<group>";
+		};
+		EC308C0317274A3600E0F06F /* ofxRetinaTrueTypeFont */ = {
+			isa = PBXGroup;
+			children = (
+				EC308C0417274A3600E0F06F /* ofxRetinaTrueTypeFont.h */,
+				EC308C0517274A3600E0F06F /* ofxRetinaTrueTypeFont.mm */,
+			);
+			name = ofxRetinaTrueTypeFont;
+			path = ../../../addons/ofxRetinaTrueTypeFont;
+			sourceTree = "<group>";
+		};
 		EC882AB8170F168D00B41AB6 /* nav */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,8 +284,8 @@
 			children = (
 				EC9D032717133D6900591838 /* exercises.cpp */,
 				EC9D032817133D6900591838 /* exercises.h */,
-				EC9D032317133B9A00591838 /* mathOne.cpp */,
-				EC9D032417133B9A00591838 /* mathOne.h */,
+				EC9D032317133B9A00591838 /* ui.cpp */,
+				EC9D032417133B9A00591838 /* ui.h */,
 			);
 			path = exercises;
 			sourceTree = "<group>";
@@ -406,7 +439,7 @@
 				EC882AC0170F168D00B41AB6 /* nav.cpp in Sources */,
 				EC882AC5170F16FD00B41AB6 /* button.cpp in Sources */,
 				EC9D031E1713312200591838 /* drawing.cpp in Sources */,
-				EC9D032517133B9A00591838 /* mathOne.cpp in Sources */,
+				EC9D032517133B9A00591838 /* ui.cpp in Sources */,
 				EC9D032917133D6900591838 /* exercises.cpp in Sources */,
 				ECDA3AD01714D4DD000036C2 /* tinyxml.cpp in Sources */,
 				ECDA3AD11714D4DD000036C2 /* tinyxmlerror.cpp in Sources */,
@@ -414,6 +447,9 @@
 				ECDA3AD31714D4DD000036C2 /* ofxXmlSettings.cpp in Sources */,
 				EC0B146E1714F4E8006DDB40 /* image.cpp in Sources */,
 				ECCFA4A41715F2EB00C04311 /* text.cpp in Sources */,
+				EC308C0617274A3600E0F06F /* ofxEasyRetina.mm in Sources */,
+				EC308C0717274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm in Sources */,
+				EC308C0817274A3600E0F06F /* ofxRetinaTrueTypeFont.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
