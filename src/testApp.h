@@ -4,6 +4,11 @@
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
 
+//For retina display
+#include "ofxEasyRetina.h"
+#include "ofxiOSEAGLView+retinaPatch.h"
+
+
 #include "nav.h"
 
 class testApp : public ofxiPhoneApp{
@@ -32,6 +37,10 @@ class testApp : public ofxiPhoneApp{
         ofTrueTypeFont verdana22;
     
         char eventString[255];
+    
+        //declare an ofxEasyRetina instance
+        ofxEasyRetina retina;
+
 
 };
 

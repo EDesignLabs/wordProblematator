@@ -12,7 +12,7 @@
 #include "ofMain.h"
 
 //#include "exerciseFrame.h"
-#include "mathOne.h"
+#include "ui.h"
 
 class exercises {
 	
@@ -38,7 +38,7 @@ class exercises {
 //-----------------------------------------------    
 //Math Problems
     
-        mathOne* problemOne;
+        ui* problemOne;
 
         
 };

@@ -34,7 +34,7 @@ exercises::exercises() {
 //-----------------------------------------------    
 //setup math problem one
     
-    problemOne = new mathOne();
+    problemOne = new ui();
     
     printf(" exercises Setup ended \n ");
 
