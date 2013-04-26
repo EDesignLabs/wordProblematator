@@ -1,22 +1,22 @@
 /*
- *  mathOne.cpp
+ *  uiCreate.cpp
  *
- *  Created by Ryan Raffa on 4/8/13.
+ *  Created by Ryan Raffa on 4/25/13.
  *
  */
 
-#include "mathOne.h"
+#include "uiCreate.h"
 
 
 
 //------------------------------------------------------------------
-mathOne::~mathOne() {
+uiCreate::~uiCreate() {
     
     thisImage.reset();
     exit();
     delete thisText;
 
-    //UI elements
+    //uiCreate elements
     delete pencil;
     delete font;
     delete table;
@@ -35,7 +35,7 @@ mathOne::~mathOne() {
 
 
 //------------------------------------------------------------------
-mathOne::mathOne() {
+uiCreate::uiCreate() {
     
     sprintf (timeString, "time: %0.2i:%0.2i:%0.2i \nelapsed time %i", ofGetHours(), ofGetMinutes(), ofGetSeconds(), ofGetElapsedTimeMillis());
     
@@ -44,7 +44,7 @@ mathOne::mathOne() {
     thisImage.setup();
     thisText = new text();
     
-    //load UI images
+    //load uiCreate images
     pencil = new ofImage;
     font = new ofImage;
     table = new ofImage;
@@ -75,7 +75,7 @@ mathOne::mathOne() {
     tableBox->set(0, 390, pencil->getWidth()+20, pencil->getHeight()+20);
     okSaveBox->set(0, 435, pencil->getWidth()+20, pencil->getHeight()+20);
     
-    theText = "Nick's daughter Penny has 25 dimes. She likes to arrange them\ninto three piles, putting an odd number of dimes into each pile. In\nhow many ways could she do this?\nSolve this problem before continuing. ";
+    theText = "Nick's daughter Penny has 25 dimes. She likes to arrange them\ninto three piles, putting an odd number of dimes into each pile. In\nhow many ways could she do this?\nSolve this problem before continuiCreateng. ";
 
     
 }
@@ -83,7 +83,7 @@ mathOne::mathOne() {
 
 
 //------------------------------------------------------------------
-void mathOne::update() {
+void uiCreate::update() {
 
     if (*fontSelected) {
         thisText->update();
@@ -94,11 +94,8 @@ void mathOne::update() {
 
 
 //------------------------------------------------------------------
-void mathOne::draw(ofTrueTypeFont& basicFont) {
+void uiCreate::draw(ofTrueTypeFont& basicFont) {
 
-    ofSetColor(255, 0, 0, 100);
-    ofRect(0, ofGetHeight()/3, ofGetWidth(), 5);
-    
     sprintf (timeString, "time: %0.2i:%0.2i:%0.2i \nelapsed time %i", ofGetHours(), ofGetMinutes(), ofGetSeconds(), ofGetElapsedTimeMillis());
 	
     ofSetHexColor(0x000000);
@@ -123,7 +120,7 @@ void mathOne::draw(ofTrueTypeFont& basicFont) {
     if (*fontSelected) {
         basicFont.drawString(theText, 40, 40);
         thisText->draw(basicFont);
-        basicFont.drawString("text selected", ofGetWidth()/2,ofGetHeight()/3);
+        basicFont.drawString("text selected", 10, ofGetHeight()/3);
         
         for (int i = 0; i < drawThese.size(); i++) {
             drawThese[i].draw();
@@ -135,7 +132,7 @@ void mathOne::draw(ofTrueTypeFont& basicFont) {
 
         basicFont.drawString(theText, 40, 40);
         thisText->draw(basicFont);
-        basicFont.drawString("pencil selected", ofGetWidth()/2,ofGetHeight()/3);
+        basicFont.drawString("pencil selected", 10, ofGetHeight()/3);
         
         for (int i = 0; i < drawThese.size(); i++) {
             drawThese[i].draw();
@@ -154,7 +151,7 @@ void mathOne::draw(ofTrueTypeFont& basicFont) {
         for (int i = 0; i < drawThese.size(); i++) {
             drawThese[i].draw();
         }
-        basicFont.drawString("table selected", ofGetWidth()/2,ofGetHeight()/3);
+        basicFont.drawString("table selected", 10, ofGetHeight()/3);
     }
 
     if (*okSaveSelected) {
@@ -164,7 +161,7 @@ void mathOne::draw(ofTrueTypeFont& basicFont) {
             drawThese[i].draw();
         }
 
-        basicFont.drawString("ok save selected", ofGetWidth()/2,ofGetHeight()/3);
+        basicFont.drawString("ok save selected", 10, ofGetHeight()/3);
     }
 
     
@@ -173,7 +170,7 @@ void mathOne::draw(ofTrueTypeFont& basicFont) {
 }
 
 //------------------------------------------------------------------
-void mathOne::touchingDown(ofTouchEventArgs &touch) {
+void uiCreate::touchingDown(ofTouchEventArgs &touch) {
 
     sprintf(eventString, "touchDown = (%2.0f, %2.0f - id %i)", touch.x, touch.y, touch.id);
     
@@ -188,15 +185,13 @@ void mathOne::touchingDown(ofTouchEventArgs &touch) {
         currentPos.x = touch.x;
         currentPos.y = touch.y;
 
-        if (currentPos.y > ofGetHeight()/3) {
-            currentDrawing.push_back(currentPos);
-            thisDrawing.update(touch);
-        }
+        currentDrawing.push_back(currentPos);
+        thisDrawing.update(touch);
     }
 }
 
 //------------------------------------------------------------------
-void mathOne::touchingMove(ofTouchEventArgs &touch) {
+void uiCreate::touchingMove(ofTouchEventArgs &touch) {
 
     sprintf(eventString, "touchMoved = (%2.0f, %2.0f - id %i)", touch.x, touch.y, touch.id);
     
@@ -209,16 +204,14 @@ void mathOne::touchingMove(ofTouchEventArgs &touch) {
         currentPos.x = touch.x;
         currentPos.y = touch.y;
 
-        if (currentPos.y > ofGetHeight()/3) {
-            currentDrawing.push_back(currentPos);
-            thisDrawing.update(touch);
-        }
+        currentDrawing.push_back(currentPos);
+        thisDrawing.update(touch);
     }
     
 }
 
 //------------------------------------------------------------------
-void mathOne::touchingUp(ofTouchEventArgs &touch) {
+void uiCreate::touchingUp(ofTouchEventArgs &touch) {
 
  	sprintf(eventString, "touchUp = (%2.0f, %2.0f - id %i)",touch.x, touch.y, touch.id);
     
@@ -239,7 +232,7 @@ void mathOne::touchingUp(ofTouchEventArgs &touch) {
         *pencilSelected = false;
         *tableSelected = false;
         *okSaveSelected = false;
-        printf(" Font gui task called \n");
+        printf(" Font guiCreate task called \n");
     }
     
     if (pencilBox->inside(touch.x, touch.y)) {
@@ -248,12 +241,12 @@ void mathOne::touchingUp(ofTouchEventArgs &touch) {
         *pencilSelected = true;
         *tableSelected = false;
         *okSaveSelected = false;
-        printf(" Pencil gui task called \n");
+        printf(" Pencil guiCreate task called \n");
     }
 
     if (tableBox->inside(touch.x, touch.y)) {
         //use image tool
-        printf(" Table gui task called \n");
+        printf(" Table guiCreate task called \n");
         *fontSelected = false;
         *pencilSelected = false;
         *tableSelected = true;
@@ -262,7 +255,7 @@ void mathOne::touchingUp(ofTouchEventArgs &touch) {
 
     if (okSaveBox->inside(touch.x, touch.y)) {
         //use image tool
-        printf(" Save gui task called \n");
+        printf(" Save guiCreate task called \n");
         *fontSelected = false;
         *pencilSelected = false;
         *tableSelected = false;
@@ -273,13 +266,13 @@ void mathOne::touchingUp(ofTouchEventArgs &touch) {
 
 
 //------------------------------------------------------------------
-void mathOne::doubleTap(ofTouchEventArgs &touch) {
+void uiCreate::doubleTap(ofTouchEventArgs &touch) {
 
 
 }
 
 //--------------------------------------------------------------
-void mathOne::exit() {
+void uiCreate::exit() {
 
 
 }

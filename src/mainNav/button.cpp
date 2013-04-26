@@ -8,11 +8,12 @@
 
 
 //------------------------------------------------------------------
-void button::setup(ofTrueTypeFont& basicFont, ofPoint pos, ofPoint size, string thisString) {
+void button::setup(ofTrueTypeFont& basicFont, ofPoint pos, ofPoint size, string thisString, ofColor thisColor) {
     
     this->basicFont = &basicFont;
     this->thisString = thisString;
-
+    this->thisColor = thisColor;
+    
     thisRectangle.set(pos.x, pos.y, size.x, size.y);
 
 //    thisRectangle.set(pos.x, pos.y, 625, 75);
@@ -20,7 +21,9 @@ void button::setup(ofTrueTypeFont& basicFont, ofPoint pos, ofPoint size, string 
     touching = false;
     selected = false;
     
-    pos.set(100, 100);}
+    pos.set(100, 100);
+
+}
 
 
 //------------------------------------------------------------------
@@ -33,12 +36,12 @@ void button::update() {
 void button::draw() {
     
     //    ofDrawBitmapString("rectPos is"+ofToString(rectangles[0].getPosition()), 520, 20);
-    
-    if (touching) ofSetColor(255, 0, 0,150);
-    else ofSetColor(0, 0, 0, 150);
+
+    if (touching) ofSetColor(255, 0, 0,250);
+    else ofSetColor(thisColor);
     ofRect(thisRectangle);
     
-    ofSetColor(255, 255, 255, 150);
+    ofSetColor(0, 0, 0);
     basicFont->drawString(thisString, thisRectangle.x+25, thisRectangle.y+50);
     
 }
