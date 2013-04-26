@@ -15,24 +15,29 @@ void nav::setup(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium,
     
     ofPoint pos;
     ofPoint size;
-    size.set(150, 75);
-    pos.set(ofGetWidth()-size.x, ofGetHeight()-size.y);
-    allButton.setup(basicFontLarge, pos, size, "TOC");
+    ofColor color;
+    homeButton.loadImage("images/ui/glyphicons_020_home.png");
+    
+    pos.set(0, 0);
+    size.set(homeButton.getWidth()+20, homeButton.getHeight()+20);
+    
+    color.set(170, 170, 170);
+    homeButtonRect.setup(basicFontLarge, pos, size, "", color);
 
     ofPoint posTwo;
     posTwo.set(50, 50);
     size.set(625, 75);
-    mathButton.setup(basicFontLarge, posTwo, size, "Math Example");
+    mathButton.setup(basicFontLarge, posTwo, size, "Math Example", color);
 
     ofPoint posThree;
     posThree.set(50, 150);
     size.set(625, 75);
-    scienceButton.setup(basicFontLarge, posThree, size, "Science Example");
+    scienceButton.setup(basicFontLarge, posThree, size, "Science Example", color);
 
     ofPoint posFour;
     posThree.set(50, 250);
     size.set(625, 75);
-    historyButton.setup(basicFontLarge, posThree, size, "History Example");
+    historyButton.setup(basicFontLarge, posThree, size, "History Example", color);
     
     navStateToc = true;
     navStateExercises = false;
@@ -52,34 +57,34 @@ void nav::update() {
 //    printf(" NAV update started \n");
     
     if (mathButton.selected) {
-        mainExercises = new exercises();
+        mainExercises = new exercisesMath();
         navStateToc = false;
         navStateExercises = true;
         mathButton.selected=false;
     }
 
     if (scienceButton.selected) {
-        mainExercises = new exercises();
+        mainExercises = new exercisesMath();
         navStateToc = false;
         navStateExercises = true;
         scienceButton.selected=false;
     }
 
     if (historyButton.selected) {
-        mainExercises = new exercises();
+        mainExercises = new exercisesMath();
         navStateToc = false;
         navStateExercises = true;
         historyButton.selected=false;
     }
 
     
-    if (allButton.selected) {
+    if (homeButtonRect.selected) {
         
         if (navStateExercises) {
             navStateExercises = false;
             navStateToc = true;
             delete mainExercises;
-            allButton.selected=false;
+            homeButtonRect.selected=false;
         }
     }
 
@@ -104,7 +109,11 @@ void nav::draw(ofTrueTypeFont& basicFont) {
 
     if (navStateExercises) {
         mainExercises->draw(basicFont);
-        allButton.draw();
+        homeButtonRect.draw();
+        
+        ofEnableAlphaBlending();
+            homeButton.draw(10, 10);
+        ofDisableAlphaBlending();
     }
 
 }
@@ -120,7 +129,7 @@ void nav::touchingDown(ofTouchEventArgs &touch) {
     
     if (navStateExercises) {
         mainExercises->touchingDown(touch);
-        allButton.touchingDown(touch);
+        homeButtonRect.touchingDown(touch);
     }
     
 }
@@ -135,7 +144,7 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
     
     if (navStateExercises) {
         mainExercises->touchingMove(touch);
-        allButton.touchingMove(touch);
+        homeButtonRect.touchingMove(touch);
     }
 
 }
@@ -151,7 +160,7 @@ void nav::touchingUp(ofTouchEventArgs &touch) {
     
     if (navStateExercises) {
         mainExercises->touchingUp(touch);
-        allButton.touchingUp(touch);
+        homeButtonRect.touchingUp(touch);
     }
     
 }

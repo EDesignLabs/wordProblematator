@@ -27,6 +27,13 @@
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
 		E4D8936F11527B74007E1F53 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* testApp.mm */; };
 		EC0B146E1714F4E8006DDB40 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0B146C1714F4E8006DDB40 /* image.cpp */; };
+		EC2DEAA41729E262004F16DA /* uiCreate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAA21729E262004F16DA /* uiCreate.cpp */; };
+		EC2DEAA91729E4B1004F16DA /* uiPresent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAA51729E4B1004F16DA /* uiPresent.cpp */; };
+		EC2DEAAA1729E4B1004F16DA /* uiReflect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAA71729E4B1004F16DA /* uiReflect.cpp */; };
+		EC2DEAB01729E6C7004F16DA /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAAC1729E6C7004F16DA /* button.cpp */; };
+		EC2DEAB11729E6C7004F16DA /* nav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAAE1729E6C7004F16DA /* nav.cpp */; };
+		EC2DEAB51729E9B0004F16DA /* problemMathOne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAB31729E9B0004F16DA /* problemMathOne.cpp */; };
+		EC2DEAB81729E9EC004F16DA /* exercisesMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2DEAB61729E9EC004F16DA /* exercisesMath.cpp */; };
 		EC308C0617274A3600E0F06F /* ofxEasyRetina.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0017274A3600E0F06F /* ofxEasyRetina.mm */; };
 		EC308C0717274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0217274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm */; };
 		EC308C0817274A3600E0F06F /* ofxRetinaTrueTypeFont.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC308C0517274A3600E0F06F /* ofxRetinaTrueTypeFont.mm */; };
@@ -34,11 +41,7 @@
 		EC311400171F389B001D2F35 /* EDesignLabLogo144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3113FF171F389B001D2F35 /* EDesignLabLogo144x144.png */; };
 		EC31140C171F3940001D2F35 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */; };
 		EC31140E171F3944001D2F35 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC31140D171F3944001D2F35 /* Default-Portrait@2x~ipad.png */; };
-		EC882AC0170F168D00B41AB6 /* nav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC882AB9170F168D00B41AB6 /* nav.cpp */; };
-		EC882AC5170F16FD00B41AB6 /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC882AC3170F16FD00B41AB6 /* button.cpp */; };
 		EC9D031E1713312200591838 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D031C1713312200591838 /* drawing.cpp */; };
-		EC9D032517133B9A00591838 /* ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D032317133B9A00591838 /* ui.cpp */; };
-		EC9D032917133D6900591838 /* exercises.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC9D032717133D6900591838 /* exercises.cpp */; };
 		ECCFA4A41715F2EB00C04311 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECCFA4A21715F2EB00C04311 /* text.cpp */; };
 		ECDA3AD01714D4DD000036C2 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3AC91714D4DD000036C2 /* tinyxml.cpp */; };
 		ECDA3AD11714D4DD000036C2 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDA3ACB1714D4DD000036C2 /* tinyxmlerror.cpp */; };
@@ -88,6 +91,20 @@
 		E4D8936D11527B74007E1F53 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = testApp.mm; path = src/testApp.mm; sourceTree = SOURCE_ROOT; };
 		EC0B146C1714F4E8006DDB40 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = src/tools/image.cpp; sourceTree = SOURCE_ROOT; };
 		EC0B146D1714F4E8006DDB40 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = image.h; path = src/tools/image.h; sourceTree = SOURCE_ROOT; };
+		EC2DEAA21729E262004F16DA /* uiCreate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiCreate.cpp; sourceTree = "<group>"; };
+		EC2DEAA31729E262004F16DA /* uiCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiCreate.h; sourceTree = "<group>"; };
+		EC2DEAA51729E4B1004F16DA /* uiPresent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiPresent.cpp; sourceTree = "<group>"; };
+		EC2DEAA61729E4B1004F16DA /* uiPresent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiPresent.h; sourceTree = "<group>"; };
+		EC2DEAA71729E4B1004F16DA /* uiReflect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiReflect.cpp; sourceTree = "<group>"; };
+		EC2DEAA81729E4B1004F16DA /* uiReflect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiReflect.h; sourceTree = "<group>"; };
+		EC2DEAAC1729E6C7004F16DA /* button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = button.cpp; sourceTree = "<group>"; };
+		EC2DEAAD1729E6C7004F16DA /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
+		EC2DEAAE1729E6C7004F16DA /* nav.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nav.cpp; sourceTree = "<group>"; };
+		EC2DEAAF1729E6C7004F16DA /* nav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nav.h; sourceTree = "<group>"; };
+		EC2DEAB31729E9B0004F16DA /* problemMathOne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problemMathOne.cpp; sourceTree = "<group>"; };
+		EC2DEAB41729E9B0004F16DA /* problemMathOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = problemMathOne.h; sourceTree = "<group>"; };
+		EC2DEAB61729E9EC004F16DA /* exercisesMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exercisesMath.cpp; sourceTree = "<group>"; };
+		EC2DEAB71729E9EC004F16DA /* exercisesMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exercisesMath.h; sourceTree = "<group>"; };
 		EC308BFF17274A3600E0F06F /* ofxEasyRetina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyRetina.h; sourceTree = "<group>"; };
 		EC308C0017274A3600E0F06F /* ofxEasyRetina.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxEasyRetina.mm; sourceTree = "<group>"; };
 		EC308C0117274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ofxiOSEAGLView+retinaPatch.h"; sourceTree = "<group>"; };
@@ -98,16 +115,8 @@
 		EC3113FF171F389B001D2F35 /* EDesignLabLogo144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EDesignLabLogo144x144.png; sourceTree = "<group>"; };
 		EC31140B171F3940001D2F35 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		EC31140D171F3944001D2F35 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		EC882AB9170F168D00B41AB6 /* nav.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nav.cpp; sourceTree = "<group>"; };
-		EC882ABA170F168D00B41AB6 /* nav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nav.h; sourceTree = "<group>"; };
-		EC882AC3170F16FD00B41AB6 /* button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = button.cpp; sourceTree = "<group>"; };
-		EC882AC4170F16FD00B41AB6 /* button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
 		EC9D031C1713312200591838 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = drawing.cpp; path = src/tools/drawing.cpp; sourceTree = SOURCE_ROOT; };
 		EC9D031D1713312200591838 /* drawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = drawing.h; path = src/tools/drawing.h; sourceTree = SOURCE_ROOT; };
-		EC9D032317133B9A00591838 /* ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui.cpp; sourceTree = "<group>"; };
-		EC9D032417133B9A00591838 /* ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui.h; sourceTree = "<group>"; };
-		EC9D032717133D6900591838 /* exercises.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exercises.cpp; sourceTree = "<group>"; };
-		EC9D032817133D6900591838 /* exercises.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exercises.h; sourceTree = "<group>"; };
 		ECCFA4A21715F2EB00C04311 /* text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = text.cpp; path = src/tools/text.cpp; sourceTree = SOURCE_ROOT; };
 		ECCFA4A31715F2EB00C04311 /* text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = text.h; path = src/tools/text.h; sourceTree = SOURCE_ROOT; };
 		ECDA3AC91714D4DD000036C2 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
@@ -239,12 +248,47 @@
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* testApp.mm */,
 				E4D8936C11527B74007E1F53 /* testApp.h */,
-				EC882AB8170F168D00B41AB6 /* nav */,
+				EC2DEAAB1729E6C7004F16DA /* mainNav */,
 				EC9D031F17133B1500591838 /* exercises */,
+				EC2DEAB21729E9B0004F16DA /* problems */,
+				EC2DEAA11729E262004F16DA /* stages */,
 				ECA9A4A7170E45DE009F748E /* tools */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
+		};
+		EC2DEAA11729E262004F16DA /* stages */ = {
+			isa = PBXGroup;
+			children = (
+				EC2DEAA21729E262004F16DA /* uiCreate.cpp */,
+				EC2DEAA31729E262004F16DA /* uiCreate.h */,
+				EC2DEAA71729E4B1004F16DA /* uiReflect.cpp */,
+				EC2DEAA81729E4B1004F16DA /* uiReflect.h */,
+				EC2DEAA51729E4B1004F16DA /* uiPresent.cpp */,
+				EC2DEAA61729E4B1004F16DA /* uiPresent.h */,
+			);
+			path = stages;
+			sourceTree = "<group>";
+		};
+		EC2DEAAB1729E6C7004F16DA /* mainNav */ = {
+			isa = PBXGroup;
+			children = (
+				EC2DEAAC1729E6C7004F16DA /* button.cpp */,
+				EC2DEAAD1729E6C7004F16DA /* button.h */,
+				EC2DEAAE1729E6C7004F16DA /* nav.cpp */,
+				EC2DEAAF1729E6C7004F16DA /* nav.h */,
+			);
+			path = mainNav;
+			sourceTree = "<group>";
+		};
+		EC2DEAB21729E9B0004F16DA /* problems */ = {
+			isa = PBXGroup;
+			children = (
+				EC2DEAB31729E9B0004F16DA /* problemMathOne.cpp */,
+				EC2DEAB41729E9B0004F16DA /* problemMathOne.h */,
+			);
+			path = problems;
+			sourceTree = "<group>";
 		};
 		EC308BFE17274A3600E0F06F /* ofxEasyRetina */ = {
 			isa = PBXGroup;
@@ -268,24 +312,11 @@
 			path = ../../../addons/ofxRetinaTrueTypeFont;
 			sourceTree = "<group>";
 		};
-		EC882AB8170F168D00B41AB6 /* nav */ = {
-			isa = PBXGroup;
-			children = (
-				EC882AB9170F168D00B41AB6 /* nav.cpp */,
-				EC882ABA170F168D00B41AB6 /* nav.h */,
-				EC882AC3170F16FD00B41AB6 /* button.cpp */,
-				EC882AC4170F16FD00B41AB6 /* button.h */,
-			);
-			path = nav;
-			sourceTree = "<group>";
-		};
 		EC9D031F17133B1500591838 /* exercises */ = {
 			isa = PBXGroup;
 			children = (
-				EC9D032717133D6900591838 /* exercises.cpp */,
-				EC9D032817133D6900591838 /* exercises.h */,
-				EC9D032317133B9A00591838 /* ui.cpp */,
-				EC9D032417133B9A00591838 /* ui.h */,
+				EC2DEAB61729E9EC004F16DA /* exercisesMath.cpp */,
+				EC2DEAB71729E9EC004F16DA /* exercisesMath.h */,
 			);
 			path = exercises;
 			sourceTree = "<group>";
@@ -436,11 +467,7 @@
 			files = (
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
 				E4D8936F11527B74007E1F53 /* testApp.mm in Sources */,
-				EC882AC0170F168D00B41AB6 /* nav.cpp in Sources */,
-				EC882AC5170F16FD00B41AB6 /* button.cpp in Sources */,
 				EC9D031E1713312200591838 /* drawing.cpp in Sources */,
-				EC9D032517133B9A00591838 /* ui.cpp in Sources */,
-				EC9D032917133D6900591838 /* exercises.cpp in Sources */,
 				ECDA3AD01714D4DD000036C2 /* tinyxml.cpp in Sources */,
 				ECDA3AD11714D4DD000036C2 /* tinyxmlerror.cpp in Sources */,
 				ECDA3AD21714D4DD000036C2 /* tinyxmlparser.cpp in Sources */,
@@ -450,6 +477,13 @@
 				EC308C0617274A3600E0F06F /* ofxEasyRetina.mm in Sources */,
 				EC308C0717274A3600E0F06F /* ofxiOSEAGLView+retinaPatch.mm in Sources */,
 				EC308C0817274A3600E0F06F /* ofxRetinaTrueTypeFont.mm in Sources */,
+				EC2DEAA41729E262004F16DA /* uiCreate.cpp in Sources */,
+				EC2DEAA91729E4B1004F16DA /* uiPresent.cpp in Sources */,
+				EC2DEAAA1729E4B1004F16DA /* uiReflect.cpp in Sources */,
+				EC2DEAB01729E6C7004F16DA /* button.cpp in Sources */,
+				EC2DEAB11729E6C7004F16DA /* nav.cpp in Sources */,
+				EC2DEAB51729E9B0004F16DA /* problemMathOne.cpp in Sources */,
+				EC2DEAB81729E9EC004F16DA /* exercisesMath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

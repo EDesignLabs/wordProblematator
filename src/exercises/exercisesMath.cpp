@@ -1,11 +1,11 @@
 /*
- *  exercises.cpp
+ *  exercisesMath.cpp
  *
  *  Created by Ryan Raffa on 4/8/13.
  *
  */
 
-#include "exercises.h"
+#include "exercisesMath.h"
 
 
 
@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-exercises::~exercises() {
+exercisesMath::~exercisesMath() {
 
     delete problemOne;
 
@@ -28,15 +28,15 @@ exercises::~exercises() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-exercises::exercises() {
+exercisesMath::exercisesMath() {
         
  
 //-----------------------------------------------    
 //setup math problem one
     
-    problemOne = new ui();
+    problemOne = new problemMathOne();
     
-    printf(" exercises Setup ended \n ");
+    printf(" exercisesMath Setup ended \n ");
 
 }
 
@@ -46,7 +46,7 @@ exercises::exercises() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------        
-void exercises::update() {
+void exercisesMath::update() {
 
     problemOne->update();
     
@@ -58,7 +58,7 @@ void exercises::update() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void exercises::draw(ofTrueTypeFont& basicFont) {
+void exercisesMath::draw(ofTrueTypeFont& basicFont) {
     
     problemOne->draw(basicFont);
 
@@ -70,28 +70,28 @@ void exercises::draw(ofTrueTypeFont& basicFont) {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-void exercises::touchingDown(ofTouchEventArgs &touch) {
+void exercisesMath::touchingDown(ofTouchEventArgs &touch) {
 
     problemOne->touchingDown(touch);
 
 }
 
 //------------------------------------------------------------------
-void exercises::touchingMove(ofTouchEventArgs &touch) {
+void exercisesMath::touchingMove(ofTouchEventArgs &touch) {
     
     problemOne->touchingMove(touch);
 
 }
 
 //------------------------------------------------------------------
-void exercises::touchingUp(ofTouchEventArgs &touch) {
+void exercisesMath::touchingUp(ofTouchEventArgs &touch) {
     
     problemOne->touchingUp(touch);
 
 }
 
 //------------------------------------------------------------------
-void exercises::doubleTap(ofTouchEventArgs &touch) {
+void exercisesMath::doubleTap(ofTouchEventArgs &touch) {
 
     problemOne->doubleTap(touch);
     

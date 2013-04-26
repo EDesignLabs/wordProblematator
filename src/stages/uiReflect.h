@@ -1,12 +1,12 @@
 /*
- *  mathOne.h
+ *  uiReflect.h
  *
- *  Created by Ryan Raffa on 4/8/13.
+ *  Created by Ryan Raffa on 4/25/13.
  *
  */
 
-#ifndef _mathOne
-#define _mathOne
+#ifndef _uiReflect
+#define _uiReflect
 
 
 #include "ofMain.h"
@@ -14,13 +14,15 @@
 #include "image.h"
 #include "text.h"
 
+#include "ofxRetinaTrueTypeFont.h"
 
-class mathOne {
+
+class uiReflect {
 	
 	public:
     
-        mathOne();
-        ~mathOne();
+        uiReflect();
+        ~uiReflect();
     
 		void update();
 		void draw(ofTrueTypeFont& basicFont);
@@ -47,7 +49,7 @@ class mathOne {
         //for text
         string theText;
     
-        //UI
+        //uiReflect
         ofImage*     pencil;
         ofImage*     font;
         ofImage*     table;
@@ -62,6 +64,7 @@ class mathOne {
         bool*   fontSelected;
         bool*   tableSelected;
         bool*   okSaveSelected;
+    
 
 };
 

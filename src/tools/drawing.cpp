@@ -40,9 +40,7 @@ void drawing::update(ofTouchEventArgs &touch) {
     newLocation.x = touch.x;
     newLocation.y = touch.y;
     
-    if (newLocation.y > ofGetHeight()/3) {
-        thePoints.push_back(newLocation);
-    }
+    thePoints.push_back(newLocation);
 
 }
 
