@@ -31,7 +31,7 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-    theNav.update();
+    theNav.update(verdana12, verdana16, verdana22);
     
 }
 

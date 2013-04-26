@@ -12,7 +12,7 @@
 class button {
 	
 public:
-    void setup(ofTrueTypeFont& basicFont, ofPoint pos, ofPoint size, string thisString, ofColor thisColor);
+    void setup(ofTrueTypeFont& basicFont, ofPoint pos, ofPoint size, ofPoint offSet, string thisString, ofColor thisColor);
     void update();
     void draw();
     
@@ -39,6 +39,8 @@ public:
     
     //used to shift the settings window around
     ofPoint         pos;
+    
+    ofPoint         offSet;
     
     
 };

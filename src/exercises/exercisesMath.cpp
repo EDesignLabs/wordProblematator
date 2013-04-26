@@ -28,13 +28,13 @@ exercisesMath::~exercisesMath() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-exercisesMath::exercisesMath() {
+exercisesMath::exercisesMath(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge) {
         
  
 //-----------------------------------------------    
 //setup math problem one
     
-    problemOne = new problemMathOne();
+    problemOne = new problemMathOne(basicFontSmall, basicFontMedium, basicFontLarge);
     
     printf(" exercisesMath Setup ended \n ");
 

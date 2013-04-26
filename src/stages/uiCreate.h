@@ -10,18 +10,18 @@
 
 
 #include "ofMain.h"
+
 #include "drawing.h"
 #include "image.h"
 #include "text.h"
 
-#include "ofxRetinaTrueTypeFont.h"
-
+#include "button.h"
 
 class uiCreate {
 	
 	public:
     
-        uiCreate();
+        uiCreate(ofTrueTypeFont& basicFont);
         ~uiCreate();
     
 		void update();
@@ -50,20 +50,20 @@ class uiCreate {
         string theText;
     
         //uiCreate
-        ofImage*     pencil;
-        ofImage*     font;
-        ofImage*     table;
-        ofImage*     okSave;
+        ofImage*    pencil;
+        ofImage*    font;
+        ofImage*    table;
+        ofImage*    okSave;
 
-        ofRectangle* pencilBox;
-        ofRectangle* fontBox;
-        ofRectangle* tableBox;
-        ofRectangle* okSaveBox;
+        button      pencilButton;
+        button      fontButton;
+        button      tableButton;
+        button      okSaveButton;
     
-        bool*   pencilSelected;
-        bool*   fontSelected;
-        bool*   tableSelected;
-        bool*   okSaveSelected;
+        bool*       pencilSelected;
+        bool*       fontSelected;
+        bool*       tableSelected;
+        bool*       okSaveSelected;
     
 
 };

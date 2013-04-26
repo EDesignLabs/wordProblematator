@@ -18,7 +18,7 @@ class nav {
 	
 	public:
         void setup(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge);
-		void update();
+		void update(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge);
 		void draw(ofTrueTypeFont& basicFont);
 
         //tracking touch events
@@ -33,14 +33,12 @@ class nav {
         button             homeButtonRect;
         ofImage            homeButton;
     
-        exercisesMath*         mainExercises;
+        exercisesMath*         mathExercises;
 
         bool    navStateToc;
         bool    navStateExercises;
     
         bool    endSplash;
-    
-        int     counter;
     
 };
 

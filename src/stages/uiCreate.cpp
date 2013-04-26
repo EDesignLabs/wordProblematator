@@ -8,6 +8,9 @@
 #include "uiCreate.h"
 
 
+////////////////////////////////////////////////////////////////////
+//      RESET                                                     //
+////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
 uiCreate::~uiCreate() {
@@ -21,10 +24,6 @@ uiCreate::~uiCreate() {
     delete font;
     delete table;
     delete okSave;
-    delete pencilBox;
-    delete fontBox;
-    delete tableBox;
-    delete okSaveBox;
 
     delete pencilSelected;
     delete fontSelected;
@@ -33,9 +32,12 @@ uiCreate::~uiCreate() {
     
 }
 
+////////////////////////////////////////////////////////////////////
+//      SETUP                                                     //
+////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-uiCreate::uiCreate() {
+uiCreate::uiCreate(ofTrueTypeFont& basicFont) {
     
     sprintf (timeString, "time: %0.2i:%0.2i:%0.2i \nelapsed time %i", ofGetHours(), ofGetMinutes(), ofGetSeconds(), ofGetElapsedTimeMillis());
     
@@ -66,25 +68,80 @@ uiCreate::uiCreate() {
     *tableSelected = false;
     *okSaveSelected = false;
 
-    pencilBox = new ofRectangle;
-    fontBox = new ofRectangle;
-    tableBox = new ofRectangle;
-    okSaveBox = new ofRectangle;
-    pencilBox->set(0, 300, pencil->getWidth()+20, pencil->getHeight()+20);
-    fontBox->set(0, 345, pencil->getWidth()+20, pencil->getHeight()+20);
-    tableBox->set(0, 390, pencil->getWidth()+20, pencil->getHeight()+20);
-    okSaveBox->set(0, 435, pencil->getWidth()+20, pencil->getHeight()+20);
     
-    theText = "Nick's daughter Penny has 25 dimes. She likes to arrange them\ninto three piles, putting an odd number of dimes into each pile. In\nhow many ways could she do this?\nSolve this problem before continuiCreateng. ";
+    ofPoint pos;
+    ofPoint size;
+    ofPoint offSet;
+    ofColor color;
+    
+    size.set(pencil->getWidth()+20, pencil->getHeight()+20);
+    pos.set(0, 300);
+    offSet.set(0, 0);
+    
+    color.set(170, 170, 170);
+    pencilButton.setup(basicFont, pos, size, offSet, "", color);
+    
+    ofPoint posTwo;
+    posTwo.set(0, 345);
+    fontButton.setup(basicFont, posTwo, size, offSet, "", color);
+    
+    ofPoint posThree;
+    posThree.set(0, 390);
+    tableButton.setup(basicFont, posThree, size, offSet, "", color);
+    
+    ofPoint posFour;
+    posThree.set(0, 435);
+    okSaveButton.setup(basicFont, posThree, size, offSet, "", color);
+        
+    theText = "Nick's daughter Penny has 25 dimes. She likes to arrange them\ninto three piles, putting an odd number of dimes into each pile. In\nhow many ways could she do this?\nSolve this problem before continuing. ";
 
     
 }
 
 
+////////////////////////////////////////////////////////////////////
+//      UPDATE                                                    //
+////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
 void uiCreate::update() {
 
+    //-----------------------------------------------
+    //NAV state is sorted out
+    
+    if (pencilButton.selected) {
+        *fontSelected = false;
+        *tableSelected = false;
+        *okSaveSelected = false;
+        *pencilSelected = true;
+        pencilButton.selected=false;
+    }
+    
+    if (fontButton.selected) {
+        *pencilSelected = false;
+        *tableSelected = false;
+        *okSaveSelected = false;
+        *fontSelected = true;
+        fontButton.selected=false;
+    }
+    
+    if (tableButton.selected) {
+        *pencilSelected = false;
+        *fontSelected = false;
+        *okSaveSelected = false;
+        *tableSelected = true;
+        tableButton.selected=false;
+    }
+    
+    if (okSaveButton.selected) {
+        *pencilSelected = false;
+        *fontSelected = false;
+        *tableSelected = false;
+        *okSaveSelected = true;
+        okSaveButton.selected=false;
+    }
+
+    
     if (*fontSelected) {
         thisText->update();
     }
@@ -92,6 +149,10 @@ void uiCreate::update() {
         
 }
 
+
+////////////////////////////////////////////////////////////////////
+//      DRAW                                                      //
+////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
 void uiCreate::draw(ofTrueTypeFont& basicFont) {
@@ -102,42 +163,31 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
 	basicFont.drawString(timeString, 10,ofGetHeight()-90);
 	basicFont.drawString(eventString, 10,ofGetHeight()-20);
     
-    ofEnableAlphaBlending();
-    
-    ofSetColor(170, 170, 170);
-    ofRect(*pencilBox);
-    ofRect(*fontBox);
-    ofRect(*tableBox);
-    ofRect(*okSaveBox);
-    
-    ofSetHexColor(0x000000);
+//-----------------------------------------------
+//The Question
 
-    pencil->draw(10, 310);
-    font->draw(10, 355);
-    table->draw(10, 400);
-    okSave->draw(10, 445);
+    basicFont.drawString(theText, 10, 100);
+    thisText->draw(basicFont);
+    
+    
+//-----------------------------------------------
+//What is created
 
-    if (*fontSelected) {
-        basicFont.drawString(theText, 40, 40);
-        thisText->draw(basicFont);
-        basicFont.drawString("text selected", 10, ofGetHeight()/3);
+    for (int i = 0; i < drawThese.size(); i++) {
+        drawThese[i].draw();
+    }
+    
+    
+//-----------------------------------------------
+//Tools
         
-        for (int i = 0; i < drawThese.size(); i++) {
-            drawThese[i].draw();
-        }
-
+    if (*fontSelected) {
+        basicFont.drawString("text selected", 10, ofGetHeight()/3);
     }
     
     if (*pencilSelected) {
-
-        basicFont.drawString(theText, 40, 40);
-        thisText->draw(basicFont);
         basicFont.drawString("pencil selected", 10, ofGetHeight()/3);
-        
-        for (int i = 0; i < drawThese.size(); i++) {
-            drawThese[i].draw();
-        }
-        
+                
         if (currentDrawing.size()>0) {
             for (int i = 1; i < currentDrawing.size(); i++) {
                 ofLine(currentDrawing[i-1].x, currentDrawing[i-1].y, currentDrawing[i].x, currentDrawing[i].y);
@@ -146,38 +196,49 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
     }
     
     if (*tableSelected) {
-        basicFont.drawString(theText, 40, 40);
-        thisText->draw(basicFont);
-        for (int i = 0; i < drawThese.size(); i++) {
-            drawThese[i].draw();
-        }
         basicFont.drawString("table selected", 10, ofGetHeight()/3);
     }
 
     if (*okSaveSelected) {
-        basicFont.drawString(theText, 40, 40);
-        thisText->draw(basicFont);
-        for (int i = 0; i < drawThese.size(); i++) {
-            drawThese[i].draw();
-        }
-
         basicFont.drawString("ok save selected", 10, ofGetHeight()/3);
     }
 
     
-    ofDisableAlphaBlending();
+//-----------------------------------------------
+//Tool Button UI
 
+    pencilButton.draw();
+    fontButton.draw();
+    tableButton.draw();
+    okSaveButton.draw();
+    
+    ofSetHexColor(0x000000);
+    
+    ofEnableAlphaBlending();
+    pencil->draw(10, 310);
+    font->draw(10, 355);
+    table->draw(10, 400);
+    okSave->draw(10, 445);
+    ofDisableAlphaBlending();
+    
 }
+
+
+////////////////////////////////////////////////////////////////////
+//      TOUCH                                                     //
+////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
 void uiCreate::touchingDown(ofTouchEventArgs &touch) {
 
     sprintf(eventString, "touchDown = (%2.0f, %2.0f - id %i)", touch.x, touch.y, touch.id);
     
-    if (*fontSelected) {
-        thisText->touchingDown(touch);
-    }
-
+    pencilButton.touchingDown(touch);
+    fontButton.touchingDown(touch);
+    tableButton.touchingDown(touch);
+    okSaveButton.touchingDown(touch);
+    
+    if (*fontSelected) thisText->touchingDown(touch);
     
     if (*pencilSelected) {
 
@@ -195,9 +256,12 @@ void uiCreate::touchingMove(ofTouchEventArgs &touch) {
 
     sprintf(eventString, "touchMoved = (%2.0f, %2.0f - id %i)", touch.x, touch.y, touch.id);
     
-    if (*fontSelected) {
-        thisText->touchingMove(touch);
-    }
+    pencilButton.touchingMove(touch);
+    fontButton.touchingMove(touch);
+    tableButton.touchingMove(touch);
+    okSaveButton.touchingMove(touch);
+
+    if (*fontSelected) thisText->touchingMove(touch);
     
     if (*pencilSelected) {
         ofPoint currentPos;
@@ -215,51 +279,17 @@ void uiCreate::touchingUp(ofTouchEventArgs &touch) {
 
  	sprintf(eventString, "touchUp = (%2.0f, %2.0f - id %i)",touch.x, touch.y, touch.id);
     
-    if (*fontSelected) {
-        thisText->touchingUp(touch);
-    }
+    pencilButton.touchingUp(touch);
+    fontButton.touchingUp(touch);
+    tableButton.touchingUp(touch);
+    okSaveButton.touchingUp(touch);
+
+    if (*fontSelected) thisText->touchingUp(touch);
 
     if (*pencilSelected) {
         currentDrawing.clear();
         drawThese.push_back(thisDrawing);
         thisDrawing.reset();
-    }
-    
-    //figures out if something was selected
-    if (fontBox->inside(touch.x, touch.y)) {
-        //use draw tool
-        *fontSelected = true;
-        *pencilSelected = false;
-        *tableSelected = false;
-        *okSaveSelected = false;
-        printf(" Font guiCreate task called \n");
-    }
-    
-    if (pencilBox->inside(touch.x, touch.y)) {
-        //use draw tool
-        *fontSelected = false;
-        *pencilSelected = true;
-        *tableSelected = false;
-        *okSaveSelected = false;
-        printf(" Pencil guiCreate task called \n");
-    }
-
-    if (tableBox->inside(touch.x, touch.y)) {
-        //use image tool
-        printf(" Table guiCreate task called \n");
-        *fontSelected = false;
-        *pencilSelected = false;
-        *tableSelected = true;
-        *okSaveSelected = false;
-    }
-
-    if (okSaveBox->inside(touch.x, touch.y)) {
-        //use image tool
-        printf(" Save guiCreate task called \n");
-        *fontSelected = false;
-        *pencilSelected = false;
-        *tableSelected = false;
-        *okSaveSelected = true;
     }
     
 }
@@ -268,6 +298,10 @@ void uiCreate::touchingUp(ofTouchEventArgs &touch) {
 //------------------------------------------------------------------
 void uiCreate::doubleTap(ofTouchEventArgs &touch) {
 
+    pencilButton.doubleTap(touch);
+    fontButton.doubleTap(touch);
+    tableButton.doubleTap(touch);
+    okSaveButton.doubleTap(touch);
 
 }
 
