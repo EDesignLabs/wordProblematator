@@ -11,6 +11,14 @@
 
 #include "ofMain.h"
 
+
+typedef struct {
+    
+    ofPoint pos;
+    int timeStamp;
+	
+}	touchPoint;
+
 class drawing {
 	
 	public:
@@ -18,11 +26,12 @@ class drawing {
         void setup();
         void update(ofTouchEventArgs &touch);
 		void draw();
-		void reset();
-    
-        vector <ofPoint> thePoints;
-    
+		void draw(int currentPos);
+        void reset();
 
+        vector <touchPoint> thePoints;
+    
+    
 };
 
 #endif

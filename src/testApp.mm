@@ -24,7 +24,7 @@ void testApp::setup(){
     verdana22.setLineHeight(24.0f);
     verdana22.setLetterSpacing(0.96);
 
-    theNav.setup(verdana12, verdana16, verdana22);
+    theNav.setup();
 
 }
 
@@ -42,7 +42,7 @@ void testApp::draw(){
     
     ofBackground(255, 255, 255);
 
-    theNav.draw(verdana12);
+    theNav.draw(verdana16);
 
 //    ofSetColor(0, 0, 0);
 //    verdana12.drawString("testing the font12 to see if there are any\nissues similar", ofGetWidth()/2-100, 200);
