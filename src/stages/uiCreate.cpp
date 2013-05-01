@@ -155,8 +155,8 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
 //    sprintf (timeString, "time: %0.2i:%0.2i:%0.2i \nelapsed time %i", ofGetHours(), ofGetMinutes(), ofGetSeconds(), ofGetElapsedTimeMillis());
 	
     ofSetHexColor(0x000000);
-	basicFont.drawString(timeString, 10,ofGetHeight()-90);
-	basicFont.drawString(eventString, 10,ofGetHeight()-20);
+//	basicFont.drawString(timeString, 10,ofGetHeight()-90);
+//	basicFont.drawString(eventString, 10,ofGetHeight()-20);
     
 //-----------------------------------------------
 //What is created

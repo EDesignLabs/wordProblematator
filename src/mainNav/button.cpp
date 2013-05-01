@@ -21,7 +21,7 @@ void button::setup(ofPoint pos, ofPoint size, ofPoint offSet, string thisString,
     touching = false;
     selected = false;
     
-    pos.set(100, 100);
+//    pos.set(100, 100);
 
 }
 
@@ -39,15 +39,20 @@ void button::setup(ofPoint pos, ofPoint size, ofColor thisColor) {
     touching = false;
     selected = false;
     
-    pos.set(100, 100);
+    this->pos = pos;
+//    pos.set(100, 100);
     
 }
 
 
 //------------------------------------------------------------------
-void button::update() {
+void button::update(ofPoint newPosition) {
     
+    thisRectangle.setPosition(newPosition.x, pos.y);
+    printf(" newPosition.x is: %d \n", newPosition.x);
+
 }
+
 
 
 //------------------------------------------------------------------
@@ -79,6 +84,8 @@ void button::drawNoColor() {
     ofRect(thisRectangle);
     
 }
+
+
 
 //------------------------------------------------------------------
 void button::touchingDown(ofTouchEventArgs &touch) {
