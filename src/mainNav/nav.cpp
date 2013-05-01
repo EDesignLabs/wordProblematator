@@ -9,41 +9,41 @@
 
 
 //------------------------------------------------------------------
-void nav::setup(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge) {
+void nav::setup() {
 
     printf(" NAV setup started \n");
     
     ofPoint pos;
     ofPoint size;
+    ofPoint offSet;
     ofColor color;
     homeButton.loadImage("images/ui/glyphicons_020_home.png");
     
     pos.set(0, 0);
     size.set(homeButton.getWidth()+20, homeButton.getHeight()+20);
+    offSet.set(25, 50);
     
     color.set(170, 170, 170);
-    homeButtonRect.setup(basicFontLarge, pos, size, "", color);
+    homeButtonRect.setup(pos, size, color);
 
     ofPoint posTwo;
     posTwo.set(50, 50);
     size.set(625, 75);
-    mathButton.setup(basicFontLarge, posTwo, size, "Math Example", color);
+    mathButton.setup(posTwo, size, offSet, "Math Example", color);
 
     ofPoint posThree;
     posThree.set(50, 150);
     size.set(625, 75);
-    scienceButton.setup(basicFontLarge, posThree, size, "Science Example", color);
+    scienceButton.setup(posThree, size, offSet, "Science Example", color);
 
     ofPoint posFour;
     posThree.set(50, 250);
     size.set(625, 75);
-    historyButton.setup(basicFontLarge, posThree, size, "History Example", color);
+    historyButton.setup(posThree, size, offSet, "History Example", color);
     
     navStateToc = true;
     navStateExercises = false;
 
-    counter = 0;
-    
     printf(" NAV setup ended \n");
     
 }
@@ -57,21 +57,21 @@ void nav::update() {
 //    printf(" NAV update started \n");
     
     if (mathButton.selected) {
-        mainExercises = new exercisesMath();
+        mathExercises = new exercisesMath();
         navStateToc = false;
         navStateExercises = true;
         mathButton.selected=false;
     }
 
     if (scienceButton.selected) {
-        mainExercises = new exercisesMath();
+        mathExercises = new exercisesMath();
         navStateToc = false;
         navStateExercises = true;
         scienceButton.selected=false;
     }
 
     if (historyButton.selected) {
-        mainExercises = new exercisesMath();
+        mathExercises = new exercisesMath();
         navStateToc = false;
         navStateExercises = true;
         historyButton.selected=false;
@@ -83,14 +83,14 @@ void nav::update() {
         if (navStateExercises) {
             navStateExercises = false;
             navStateToc = true;
-            delete mainExercises;
+            delete mathExercises;
             homeButtonRect.selected=false;
         }
     }
 
     //based on what state is active, update information is passed
     if (navStateExercises) {
-        mainExercises->update();
+        mathExercises->update();
     }
     
 //    printf(" NAV udpate ended \n");
@@ -102,14 +102,14 @@ void nav::update() {
 void nav::draw(ofTrueTypeFont& basicFont) {
 
     if (navStateToc) {
-        mathButton.draw();
-        scienceButton.draw();
-        historyButton.draw();
+        mathButton.draw(basicFont);
+        scienceButton.draw(basicFont);
+        historyButton.draw(basicFont);
     }
 
     if (navStateExercises) {
-        mainExercises->draw(basicFont);
-        homeButtonRect.draw();
+        mathExercises->draw(basicFont);
+        homeButtonRect.draw(basicFont);
         
         ofEnableAlphaBlending();
             homeButton.draw(10, 10);
@@ -128,7 +128,7 @@ void nav::touchingDown(ofTouchEventArgs &touch) {
     }
     
     if (navStateExercises) {
-        mainExercises->touchingDown(touch);
+        mathExercises->touchingDown(touch);
         homeButtonRect.touchingDown(touch);
     }
     
@@ -143,7 +143,7 @@ void nav::touchingMove(ofTouchEventArgs &touch) {
     }
     
     if (navStateExercises) {
-        mainExercises->touchingMove(touch);
+        mathExercises->touchingMove(touch);
         homeButtonRect.touchingMove(touch);
     }
 
@@ -159,7 +159,7 @@ void nav::touchingUp(ofTouchEventArgs &touch) {
     }
     
     if (navStateExercises) {
-        mainExercises->touchingUp(touch);
+        mathExercises->touchingUp(touch);
         homeButtonRect.touchingUp(touch);
     }
     

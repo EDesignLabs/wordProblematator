@@ -17,7 +17,7 @@
 class nav {
 	
 	public:
-        void setup(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge);
+        void setup();
 		void update();
 		void draw(ofTrueTypeFont& basicFont);
 
@@ -33,14 +33,12 @@ class nav {
         button             homeButtonRect;
         ofImage            homeButton;
     
-        exercisesMath*         mainExercises;
+        exercisesMath*         mathExercises;
 
         bool    navStateToc;
         bool    navStateExercises;
     
         bool    endSplash;
-    
-        int     counter;
     
 };
 

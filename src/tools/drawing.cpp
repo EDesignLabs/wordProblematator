@@ -7,6 +7,7 @@
 
 #include "drawing.h"
 
+
 ////////////////////////////////////////////////////////////////////
 //      RESET                                                     //
 ////////////////////////////////////////////////////////////////////
@@ -19,6 +20,11 @@ void drawing::reset() {
     printf(" drawing reset ended \n");
     
 }
+
+
+////////////////////////////////////////////////////////////////////
+//      SETUP                                                     //
+////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
 void drawing::setup() {
@@ -33,12 +39,17 @@ void drawing::setup() {
 }
 
 		 
-//------------------------------------------------------------------        
+////////////////////////////////////////////////////////////////////
+//      UPDATE                                                    //
+////////////////////////////////////////////////////////////////////
+
+//------------------------------------------------------------------
 void drawing::update(ofTouchEventArgs &touch) {
     
-    ofPoint newLocation;
-    newLocation.x = touch.x;
-    newLocation.y = touch.y;
+    touchPoint newLocation;
+    newLocation.pos.x = touch.x;
+    newLocation.pos.y = touch.y;
+    newLocation.timeStamp = ofGetElapsedTimeMillis();
     
     thePoints.push_back(newLocation);
 
@@ -50,7 +61,21 @@ void drawing::draw() {
     
     if (thePoints.size() > 0) {
         for (int i = 1; i < thePoints.size(); i++) {
-            ofLine(thePoints[i-1].x, thePoints[i-1].y, thePoints[i].x, thePoints[i].y);
+            ofLine(thePoints[i-1].pos.x, thePoints[i-1].pos.y, thePoints[i].pos.x, thePoints[i].pos.y);
         }
     }
 }
+
+//------------------------------------------------------------------
+void drawing::draw(int currentTime) {
+    
+    if (thePoints.size() > 0) {
+        for (int i = 1; i < thePoints.size(); i++) {
+            
+            if (thePoints[i].timeStamp < currentTime) {
+            ofLine(thePoints[i-1].pos.x, thePoints[i-1].pos.y, thePoints[i].pos.x, thePoints[i].pos.y);
+            }
+        }
+    }
+}
+

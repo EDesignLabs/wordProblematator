@@ -10,12 +10,11 @@
 
 
 #include "ofMain.h"
+
+#include "button.h"
 #include "drawing.h"
 #include "image.h"
 #include "text.h"
-
-#include "ofxRetinaTrueTypeFont.h"
-
 
 class uiReflect {
 	
@@ -24,6 +23,7 @@ class uiReflect {
         uiReflect();
         ~uiReflect();
     
+        void setPoints(vector <drawing> theDrawings);
 		void update();
 		void draw(ofTrueTypeFont& basicFont);
 
@@ -34,38 +34,19 @@ class uiReflect {
         void doubleTap(ofTouchEventArgs &touch);
         void exit();
 
-        vector <ofPoint> currentDrawing;
-        
         //This is the drawing that is tracked and then pushed on the stack
         vector <drawing> drawThese;
-        drawing thisDrawing;
-
-        image thisImage;
-        text* thisText;
-
-        char eventString[255];
-        char timeString[255];
     
-        //for text
-        string theText;
+        int              startTime;
+        int              endTime;
     
         //uiReflect
-        ofImage*     pencil;
-        ofImage*     font;
-        ofImage*     table;
-        ofImage*     okSave;
-
-        ofRectangle* pencilBox;
-        ofRectangle* fontBox;
-        ofRectangle* tableBox;
-        ofRectangle* okSaveBox;
-    
-        bool*   pencilSelected;
-        bool*   fontSelected;
-        bool*   tableSelected;
-        bool*   okSaveSelected;
+        button*          scrubBox;
+        ofPoint*         scrubLocation;
+        ofPoint*         scrubPos;
     
 
+    
 };
 
 #endif

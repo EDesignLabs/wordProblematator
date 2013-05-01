@@ -11,6 +11,8 @@
 
 #include "ofMain.h"
 
+#include "button.h"
+
 #include "uiCreate.h"
 #include "uiReflect.h"
 #include "uiPresent.h"
@@ -37,12 +39,29 @@ class problemMathOne {
 
 
 //-----------------------------------------------    
-//Math Problems
+//Create, Reflect, Present
     
-        uiCreate* create;
-        uiReflect* reflect;
-        uiPresent* present;
+        uiCreate*   create;
+        uiReflect*  reflect;
+        uiPresent*  present;
+    
+        string      theText;
+    
+//-----------------------------------------------
+//UI State
+    
+        button             createButton;
+        button             reflectButton;
+        button             presentButton;
+        button             questionButton;
+        ofImage            questionButtonImage;
         
+        bool               navStateCreate;
+        bool               navStateReflect;
+        bool               navStatePresent;
+        bool               navStateQuestion;
+    
+    
 };
 
 #endif
