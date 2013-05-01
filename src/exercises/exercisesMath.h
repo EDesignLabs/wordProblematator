@@ -17,7 +17,7 @@ class exercisesMath {
 	
 	public:
         
-        exercisesMath(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge);
+        exercisesMath();
         ~exercisesMath();
     
         void update();

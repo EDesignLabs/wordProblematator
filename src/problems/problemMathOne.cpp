@@ -18,6 +18,8 @@
 problemMathOne::~problemMathOne() {
 
     delete create;
+    delete reflect;
+    delete present;
 
 }
 
@@ -28,13 +30,17 @@ problemMathOne::~problemMathOne() {
 ////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------
-problemMathOne::problemMathOne(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge) {
+problemMathOne::problemMathOne() {
         
  
+    theText = "Four women live in different cities. One of the cities is San Francisco.\nDetermine which city each woman lives in.\n1. The woman from Charleston (South Carolina), the woman\nfrom Gainesville (Florida), and Riana are not related.\n2. Wendy and the woman from Provo are cousins.\n3. Neither Phyllis nor Wendy is from the West Coast.\n4. Ann is from a coastal city.";
+    
 //-----------------------------------------------    
 //setup math problem one
     
-    create = new uiCreate(basicFontSmall);
+    create = new uiCreate(theText);
+    reflect = new uiReflect;
+    present = new uiPresent;
     
     ofPoint pos;
     ofPoint size;
@@ -47,23 +53,23 @@ problemMathOne::problemMathOne(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& b
     offSet.set(15, 32);
     
     color.set(170, 170, 170);
-    questionButton.setup(basicFontLarge, pos, size, offSet, "", color);
+    questionButton.setup(pos, size, color);
     
     ofPoint posTwo;
     posTwo.set(46, 0);
     size.set(312, 46);
     color.set(200, 52, 70);
-    createButton.setup(basicFontLarge, posTwo, size, offSet, "1. Create", color);
+    createButton.setup(posTwo, size, offSet, "1. Create", color);
     
     ofPoint posThree;
     posThree.set(358, 0);
     color.set(68, 116, 176);
-    reflectButton.setup(basicFontLarge, posThree, size, offSet, "2. Reflect", color);
+    reflectButton.setup(posThree, size, offSet, "2. Reflect", color);
     
     ofPoint posFour;
     posThree.set(670, 0);
     color.set(230, 224, 47);
-    presentButton.setup(basicFontLarge, posThree, size, offSet, "3. Present", color);
+    presentButton.setup(posThree, size, offSet, "3. Present", color);
     
     navStateCreate = true;
     navStateReflect = false;
@@ -100,6 +106,9 @@ void problemMathOne::update() {
         navStateQuestion = false;
         navStateReflect = true;
         reflectButton.selected=false;
+        
+        //set value of drawing
+        reflect->setPoints(create->drawThese);
     }
     
     if (presentButton.selected) {
@@ -108,6 +117,10 @@ void problemMathOne::update() {
         navStateQuestion = false;
         navStatePresent = true;
         presentButton.selected=false;
+
+        //set value of drawing
+        present->setPoints(create->drawThese);
+
     }
     
     if (questionButton.selected) {        
@@ -121,9 +134,9 @@ void problemMathOne::update() {
 //-----------------------------------------------
 //What is done based on NAV state
 
-    if (navStateCreate) {
-        create->update();
-    }
+    if (navStateCreate) create->update();
+    if (navStateReflect) reflect->update();
+    if (navStatePresent) present->update();
     
 }
 
@@ -136,6 +149,14 @@ void problemMathOne::update() {
 void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 
     if (navStateCreate) create->draw(basicFont);
+    if (navStateReflect) reflect->draw(basicFont);
+    if (navStatePresent) present->draw(basicFont);
+    
+//-----------------------------------------------
+//The Question
+    
+    basicFont.drawString(theText, 10, 100);
+
     
 //-----------------------------------------------
 //Feedback
@@ -148,10 +169,10 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 //-----------------------------------------------
 //Button UI
 
-    createButton.draw();
-    reflectButton.draw();
-    presentButton.draw();
-    questionButton.draw();
+    createButton.draw(basicFont);
+    reflectButton.draw(basicFont);
+    presentButton.draw(basicFont);
+    questionButton.draw(basicFont);
     
     ofEnableAlphaBlending();
     questionButtonImage.draw(ofGetWidth()-35, 10);
@@ -173,7 +194,9 @@ void problemMathOne::touchingDown(ofTouchEventArgs &touch) {
     questionButton.touchingDown(touch);
     
     if (navStateCreate) create->touchingDown(touch);
-
+    if (navStateReflect) reflect->touchingDown(touch);
+    if (navStatePresent) present->touchingDown(touch);
+    
 }
 
 //------------------------------------------------------------------
@@ -185,7 +208,9 @@ void problemMathOne::touchingMove(ofTouchEventArgs &touch) {
     questionButton.touchingMove(touch);
 
     if (navStateCreate) create->touchingMove(touch);
-
+    if (navStateReflect) reflect->touchingMove(touch);
+    if (navStatePresent) present->touchingMove(touch);
+    
 }
 
 //------------------------------------------------------------------
@@ -197,7 +222,9 @@ void problemMathOne::touchingUp(ofTouchEventArgs &touch) {
     questionButton.touchingUp(touch);
 
     if (navStateCreate) create->touchingUp(touch);
-
+    if (navStateReflect) reflect->touchingUp(touch);
+    if (navStatePresent) present->touchingUp(touch);
+    
 }
 
 //------------------------------------------------------------------
@@ -209,6 +236,8 @@ void problemMathOne::doubleTap(ofTouchEventArgs &touch) {
     questionButton.doubleTap(touch);
 
     if (navStateCreate) create->doubleTap(touch);
+    if (navStateReflect) reflect->doubleTap(touch);
+    if (navStatePresent) present->doubleTap(touch);
     
 }
 

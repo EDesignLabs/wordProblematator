@@ -21,7 +21,7 @@ class uiCreate {
 	
 	public:
     
-        uiCreate(ofTrueTypeFont& basicFont);
+        uiCreate(string theText);
         ~uiCreate();
     
 		void update();
@@ -38,10 +38,11 @@ class uiCreate {
         
         //This is the drawing that is tracked and then pushed on the stack
         vector <drawing> drawThese;
+    
+        //how initial spots are drawn
         drawing thisDrawing;
 
         image thisImage;
-        text* thisText;
 
         char eventString[255];
         char timeString[255];

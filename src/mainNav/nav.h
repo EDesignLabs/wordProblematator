@@ -17,8 +17,8 @@
 class nav {
 	
 	public:
-        void setup(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge);
-		void update(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge);
+        void setup();
+		void update();
 		void draw(ofTrueTypeFont& basicFont);
 
         //tracking touch events

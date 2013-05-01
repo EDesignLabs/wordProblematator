@@ -12,9 +12,12 @@
 class button {
 	
 public:
-    void setup(ofTrueTypeFont& basicFont, ofPoint pos, ofPoint size, ofPoint offSet, string thisString, ofColor thisColor);
+    void setup(ofPoint pos, ofPoint size, ofPoint offSet, string thisString, ofColor thisColor);
+    void setup(ofPoint pos, ofPoint size, ofColor thisColor);
     void update();
     void draw();
+    void draw(ofTrueTypeFont& basicFont);
+    void drawNoColor();
     
     //tracking touch events
     void touchingDown(ofTouchEventArgs &touch);

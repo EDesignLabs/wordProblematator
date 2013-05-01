@@ -9,7 +9,7 @@
 
 
 //------------------------------------------------------------------
-void nav::setup(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge) {
+void nav::setup() {
 
     printf(" NAV setup started \n");
     
@@ -24,22 +24,22 @@ void nav::setup(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium,
     offSet.set(25, 50);
     
     color.set(170, 170, 170);
-    homeButtonRect.setup(basicFontLarge, pos, size, offSet, "", color);
+    homeButtonRect.setup(pos, size, color);
 
     ofPoint posTwo;
     posTwo.set(50, 50);
     size.set(625, 75);
-    mathButton.setup(basicFontLarge, posTwo, size, offSet, "Math Example", color);
+    mathButton.setup(posTwo, size, offSet, "Math Example", color);
 
     ofPoint posThree;
     posThree.set(50, 150);
     size.set(625, 75);
-    scienceButton.setup(basicFontLarge, posThree, size, offSet, "Science Example", color);
+    scienceButton.setup(posThree, size, offSet, "Science Example", color);
 
     ofPoint posFour;
     posThree.set(50, 250);
     size.set(625, 75);
-    historyButton.setup(basicFontLarge, posThree, size, offSet, "History Example", color);
+    historyButton.setup(posThree, size, offSet, "History Example", color);
     
     navStateToc = true;
     navStateExercises = false;
@@ -49,7 +49,7 @@ void nav::setup(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium,
 }
 		 
 //------------------------------------------------------------------
-void nav::update(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge) {
+void nav::update() {
 
     //depending on the selection made, a specific setup is run
     //when returning to TOC from monster, monster is reset
@@ -57,21 +57,21 @@ void nav::update(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium
 //    printf(" NAV update started \n");
     
     if (mathButton.selected) {
-        mathExercises = new exercisesMath(basicFontSmall, basicFontMedium, basicFontLarge);
+        mathExercises = new exercisesMath();
         navStateToc = false;
         navStateExercises = true;
         mathButton.selected=false;
     }
 
     if (scienceButton.selected) {
-        mathExercises = new exercisesMath(basicFontSmall, basicFontMedium, basicFontLarge);
+        mathExercises = new exercisesMath();
         navStateToc = false;
         navStateExercises = true;
         scienceButton.selected=false;
     }
 
     if (historyButton.selected) {
-        mathExercises = new exercisesMath(basicFontSmall, basicFontMedium, basicFontLarge);
+        mathExercises = new exercisesMath();
         navStateToc = false;
         navStateExercises = true;
         historyButton.selected=false;
@@ -102,14 +102,14 @@ void nav::update(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium
 void nav::draw(ofTrueTypeFont& basicFont) {
 
     if (navStateToc) {
-        mathButton.draw();
-        scienceButton.draw();
-        historyButton.draw();
+        mathButton.draw(basicFont);
+        scienceButton.draw(basicFont);
+        historyButton.draw(basicFont);
     }
 
     if (navStateExercises) {
         mathExercises->draw(basicFont);
-        homeButtonRect.draw();
+        homeButtonRect.draw(basicFont);
         
         ofEnableAlphaBlending();
             homeButton.draw(10, 10);

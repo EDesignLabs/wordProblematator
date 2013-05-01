@@ -21,7 +21,7 @@ class problemMathOne {
 	
 	public:
         
-        problemMathOne(ofTrueTypeFont& basicFontSmall, ofTrueTypeFont& basicFontMedium, ofTrueTypeFont& basicFontLarge);
+        problemMathOne();
         ~problemMathOne();
     
         void update();
@@ -41,9 +41,11 @@ class problemMathOne {
 //-----------------------------------------------    
 //Create, Reflect, Present
     
-        uiCreate* create;
-        uiReflect* reflect;
-        uiPresent* present;
+        uiCreate*   create;
+        uiReflect*  reflect;
+        uiPresent*  present;
+    
+        string      theText;
     
 //-----------------------------------------------
 //UI State
