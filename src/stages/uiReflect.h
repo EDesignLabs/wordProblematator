@@ -43,9 +43,11 @@ class uiReflect {
         //uiReflect
         button*          scrubBox;
         ofPoint*         scrubLocation;
-        ofPoint*         scrubPos;
+        ofPoint          scrubPos;
+        vector <ofPoint> scrubFeedback;
     
-
+        //shows where pointer last left
+        button*          currentPos;
     
 };
 

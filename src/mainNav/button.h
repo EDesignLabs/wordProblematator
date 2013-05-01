@@ -14,7 +14,7 @@ class button {
 public:
     void setup(ofPoint pos, ofPoint size, ofPoint offSet, string thisString, ofColor thisColor);
     void setup(ofPoint pos, ofPoint size, ofColor thisColor);
-    void update();
+    void update(ofPoint newPosition);
     void draw();
     void draw(ofTrueTypeFont& basicFont);
     void drawNoColor();
@@ -40,7 +40,7 @@ public:
     bool            touching;
     bool            selected;
     
-    //used to shift the settings window around
+    //reuse info
     ofPoint         pos;
     
     ofPoint         offSet;
