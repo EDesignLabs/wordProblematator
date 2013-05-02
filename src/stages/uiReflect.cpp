@@ -19,6 +19,10 @@ uiReflect::~uiReflect() {
     delete scrubBox;
     delete scrubLocation;
     delete currentPos;
+    
+    
+    delete playPauseButton;
+    delete flagButton;
 
 }
 
@@ -29,8 +33,6 @@ uiReflect::~uiReflect() {
 
 //------------------------------------------------------------------
 uiReflect::uiReflect() {
-    
-
     
     //set initial values for state
 
@@ -44,21 +46,46 @@ uiReflect::uiReflect() {
     float scrubHeight;
     scrubHeight = 50;
     
+    
     //main scrub box
-    pos.set(0, ofGetHeight()-scrubHeight);
-    size.set(ofGetWidth(), scrubHeight);
+    pos.set(100, ofGetHeight()-scrubHeight);
+    size.set(ofGetWidth()-pos.x, scrubHeight);
     color.set(170, 170, 170);
     scrubBox->setup(pos, size, color);
 
+    
     //position indicator
     size.set(10, scrubHeight);
     color.set(0, 0, 170);
     currentPos->setup(pos, size, color);
     
-    
     scrubLocation = new ofPoint;
-    scrubLocation->set(0, 0);
+    scrubLocation->set(pos);
     scrubPos.set(0, 0);
+    
+    
+    //playback and flag
+    playPauseButton = new button;
+    flagButton = new button;
+
+    color.set(170, 170, 170);
+    
+    ofPoint offSet;
+    offSet.set(17, 15);
+    ofImage play;
+    play.loadImage("images/ui/glyphicons_173_play.png");
+    ofImage pause;
+    pause.loadImage("images/ui/glyphicons_174_pause.png");
+    ofImage flag;
+    flag.loadImage("images/ui/glyphicons_266_flag.png");
+
+    pos.set(0, ofGetHeight()-scrubHeight);
+    size.set(50, 50);
+    playPauseButton->setup(pos, size, color, pause, play, offSet);
+
+    offSet.set(16, 12);
+    pos.set(50, ofGetHeight()-scrubHeight);
+    flagButton->setup(pos, size, color, flag, offSet);
     
 }
 
@@ -92,7 +119,7 @@ void uiReflect::setPoints(vector <drawing> theDrawings) {
     mapTempPos.y = 10;
     for (int i = 0; i < theDrawings.size(); i++){
         for (int h = 0; h < drawThese[i].thePoints.size(); h++){
-            mapTempPos.x = ofMap(drawThese[i].thePoints[h].timeStamp, startTime, endTime, 0, ofGetWidth());
+            mapTempPos.x = ofMap(drawThese[i].thePoints[h].timeStamp, startTime, endTime, 100, ofGetWidth());
             mapTempPos.y *= -1;
             
             scrubFeedback.push_back(mapTempPos);
@@ -110,6 +137,63 @@ void uiReflect::setPoints(vector <drawing> theDrawings) {
 }
 
 
+////////////////////////////////////////////////////////////////////
+//      PLAY DATA                                                 //
+////////////////////////////////////////////////////////////////////
+
+//------------------------------------------------------------------
+void uiReflect::playData() {
+    
+    if (playPauseButton->toggle && drawThese.size() > 0) {
+        
+        int diff;
+        currentTime = ofGetElapsedTimeMillis();
+        diff =  currentTime - previousTime;
+        
+        printf(" diff is: %d \n", diff);
+    
+        //this advances the drawing
+        if (scrubPos.x <= endTime) {
+            scrubPos.x += diff;
+        } else {
+            scrubPos.x = startTime;
+        }
+
+        printf(" scrubPos is: %f \n", scrubPos.x);
+        
+    //this advances the currentPos scrubBox indicator
+        scrubLocation->x = ofMap(scrubPos.x, startTime, endTime, 100, ofGetWidth());
+        
+        printf(" scrubLocation.x is: %f \n", scrubLocation->x);
+        
+        currentPos->update(*scrubLocation);
+                
+        previousTime = ofGetElapsedTimeMillis();
+   
+    } else {
+        
+        currentTime = previousTime = ofGetElapsedTimeMillis();
+        scrubPos.x = ofMap(scrubLocation->x, 100, ofGetWidth(), startTime, endTime);
+
+    }
+    
+}
+
+
+////////////////////////////////////////////////////////////////////
+//      FLAG REFLECTION                                           //
+////////////////////////////////////////////////////////////////////
+
+//------------------------------------------------------------------
+void uiReflect::flagReflection() {
+    
+    if (flagButton->toggle && drawThese.size() > 0) {
+
+        
+        
+    }
+}
+
 
 ////////////////////////////////////////////////////////////////////
 //      UPDATE                                                    //
@@ -118,8 +202,11 @@ void uiReflect::setPoints(vector <drawing> theDrawings) {
 //------------------------------------------------------------------
 void uiReflect::update() {
     
+    playData();
+    
     if (scrubBox->touching) {
-        scrubPos.x = ofMap(scrubLocation->x, 0, ofGetWidth(), startTime, endTime);
+        playPauseButton->toggle = false;
+        scrubPos.x = ofMap(scrubLocation->x, 100, ofGetWidth(), startTime, endTime);
         currentPos->update(*scrubLocation);
     }
     
@@ -134,6 +221,8 @@ void uiReflect::update() {
 //------------------------------------------------------------------
 void uiReflect::draw(ofTrueTypeFont& basicFont) {
 
+    playPauseButton->drawNoColorWithImageToggle();
+    flagButton->drawNoColorWithImage();
     scrubBox->drawNoColor();
     currentPos->draw();
     
@@ -157,7 +246,9 @@ void uiReflect::draw(ofTrueTypeFont& basicFont) {
 
 //------------------------------------------------------------------
 void uiReflect::touchingDown(ofTouchEventArgs &touch) {
-    
+
+        playPauseButton->touchingDown(touch);
+        flagButton->touchingDown(touch);
         scrubBox->touchingDown(touch);
         if (scrubBox->touching) scrubLocation->set(touch.x, touch.y);
 
@@ -167,14 +258,18 @@ void uiReflect::touchingDown(ofTouchEventArgs &touch) {
 //------------------------------------------------------------------
 void uiReflect::touchingMove(ofTouchEventArgs &touch) {
 
+        playPauseButton->touchingMove(touch);
+        flagButton->touchingMove(touch);
         scrubBox->touchingMove(touch);
-        if (scrubBox->touching) scrubLocation->set(touch.x, touch.y);
+        if (scrubBox->touching && touch.x >= scrubBox->pos.x) scrubLocation->set(touch.x, touch.y);
     
 }
 
 //------------------------------------------------------------------
 void uiReflect::touchingUp(ofTouchEventArgs &touch) {
 
+        playPauseButton->touchingUp(touch);
+        flagButton->touchingUp(touch);
         scrubBox->touchingUp(touch);
         if (scrubBox->touching) scrubLocation->set(touch.x, touch.y);
     
