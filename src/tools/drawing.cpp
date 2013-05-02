@@ -73,7 +73,7 @@ void drawing::draw(int currentTime) {
         for (int i = 1; i < thePoints.size(); i++) {
             
             if (thePoints[i].timeStamp < currentTime) {
-            ofLine(thePoints[i-1].pos.x, thePoints[i-1].pos.y, thePoints[i].pos.x, thePoints[i].pos.y);
+                ofLine(thePoints[i-1].pos.x, thePoints[i-1].pos.y, thePoints[i].pos.x, thePoints[i].pos.y);
             }
         }
     }
