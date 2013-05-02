@@ -14,10 +14,15 @@ class button {
 public:
     void setup(ofPoint pos, ofPoint size, ofPoint offSet, string thisString, ofColor thisColor);
     void setup(ofPoint pos, ofPoint size, ofColor thisColor);
+    void setup(ofPoint pos, ofPoint size, ofColor thisColor, ofImage theImage, ofPoint offset);
+    void setup(ofPoint pos, ofPoint size, ofColor thisColor, ofImage theImageOne, ofImage theImageTwo, ofPoint offset);
     void update(ofPoint newPosition);
     void draw();
+    void drawToggle();
     void draw(ofTrueTypeFont& basicFont);
     void drawNoColor();
+    void drawNoColorWithImage();
+    void drawNoColorWithImageToggle();
     
     //tracking touch events
     void touchingDown(ofTouchEventArgs &touch);
@@ -30,6 +35,11 @@ public:
     
     //button color
     ofColor        thisColor;
+    
+    //image
+    ofImage        theImage;
+    ofImage        theImageTwo;
+    bool           toggle;
     
     //text for buttons
     ofTrueTypeFont* basicFont;                           //  Font used. May need to address alternative sizes.

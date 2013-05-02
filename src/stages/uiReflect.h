@@ -34,6 +34,9 @@ class uiReflect {
         void doubleTap(ofTouchEventArgs &touch);
         void exit();
 
+        void playData();
+        void flagReflection();
+    
         //This is the drawing that is tracked and then pushed on the stack
         vector <drawing> drawThese;
     
@@ -46,8 +49,17 @@ class uiReflect {
         ofPoint          scrubPos;
         vector <ofPoint> scrubFeedback;
     
+        //for playback and leaving reflections
+        button*         playPauseButton;
+        button*         flagButton;
+    
         //shows where pointer last left
         button*          currentPos;
+    
+        //used for playback
+        int           currentTime;
+        int           previousTime;
+    
     
 };
 

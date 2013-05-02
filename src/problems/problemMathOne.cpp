@@ -49,25 +49,24 @@ problemMathOne::problemMathOne() {
     questionButtonImage.loadImage("images/ui/glyphicons_194_circle_question_mark.png");
     
     size.set(questionButtonImage.getWidth()+20, questionButtonImage.getHeight()+20);
-    pos.set(ofGetWidth()-46, 0);
+    pos.set(ofGetWidth()-45, 0);
     offSet.set(15, 32);
-    
     color.set(170, 170, 170);
     questionButton.setup(pos, size, color);
     
     ofPoint posTwo;
     posTwo.set(46, 0);
-    size.set(312, 46);
+    size.set(311, 46);
     color.set(200, 52, 70);
     createButton.setup(posTwo, size, offSet, "1. Create", color);
     
     ofPoint posThree;
-    posThree.set(358, 0);
+    posThree.set(357, 0);
     color.set(68, 116, 176);
     reflectButton.setup(posThree, size, offSet, "2. Reflect", color);
     
     ofPoint posFour;
-    posThree.set(670, 0);
+    posThree.set(668, 0);
     color.set(230, 224, 47);
     presentButton.setup(posThree, size, offSet, "3. Present", color);
     
@@ -75,6 +74,12 @@ problemMathOne::problemMathOne() {
     navStateReflect = false;
     navStatePresent = false;
     navStateQuestion = false;
+    
+
+//-----------------------------------------------
+//poor man's feedback
+    
+    feedbackBrickPos.set(50, 46);
     
     printf(" problemMathOne Setup ended \n ");
 
@@ -137,7 +142,31 @@ void problemMathOne::update() {
     if (navStateCreate) create->update();
     if (navStateReflect) reflect->update();
     if (navStatePresent) present->update();
+
+//-----------------------------------------------
+//poor man's feedback
+
+    if (navStateCreate) {
+        distX = createButton.pos.x - feedbackBrickPos.x;
+        feedbackBrickPos.x += distX/8.0;
+    }
     
+    if (navStateReflect) {
+        distX = reflectButton.pos.x - feedbackBrickPos.x;
+        feedbackBrickPos.x += distX/8.0;
+    }
+    
+    if (navStatePresent) {
+        distX = presentButton.pos.x - feedbackBrickPos.x;
+        feedbackBrickPos.x += distX/8.0;
+    }
+
+    if (navStateQuestion) {
+        distX = questionButton.pos.x - feedbackBrickPos.x;
+        feedbackBrickPos.x += distX/8.0;
+    }
+
+
 }
 
 
@@ -148,6 +177,14 @@ void problemMathOne::update() {
 //------------------------------------------------------------------
 void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 
+//-----------------------------------------------
+//poor man's feedback
+    
+    ofRect(feedbackBrickPos.x, feedbackBrickPos.y, 311, 5);
+    
+//-----------------------------------------------
+//actual state
+    
     if (navStateCreate) create->draw(basicFont);
     if (navStateReflect) reflect->draw(basicFont);
     if (navStatePresent) present->draw(basicFont);
@@ -161,10 +198,10 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 //-----------------------------------------------
 //Feedback
     
-    if (navStateCreate) basicFont.drawString("create selected", ofGetWidth()/2, 60);
-    if (navStateReflect) basicFont.drawString("reflect selected", ofGetWidth()/2, 60);
-    if (navStatePresent) basicFont.drawString("present selected", ofGetWidth()/2, 60);
-    if (navStateQuestion) basicFont.drawString("question selected", ofGetWidth()/2, 60);
+//    if (navStateCreate) basicFont.drawString("create selected", ofGetWidth()/2, 60);
+//    if (navStateReflect) basicFont.drawString("reflect selected", ofGetWidth()/2, 60);
+//    if (navStatePresent) basicFont.drawString("present selected", ofGetWidth()/2, 60);
+//    if (navStateQuestion) basicFont.drawString("question selected", ofGetWidth()/2, 60);
 
 //-----------------------------------------------
 //Button UI

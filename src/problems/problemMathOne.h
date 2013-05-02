@@ -62,6 +62,12 @@ class problemMathOne {
         bool               navStateQuestion;
     
     
+//-----------------------------------------------
+//Feedback (quick and dirty)
+    
+        ofPoint            feedbackBrickPos;
+        float              distX;
+    
 };
 
 #endif

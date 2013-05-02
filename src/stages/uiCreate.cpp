@@ -78,6 +78,7 @@ uiCreate::uiCreate(string theText) {
     
     color.set(170, 170, 170);
     pencilButton.setup(pos, size, color);
+    pencilButton.toggle = true;
     
     ofPoint posTwo;
     posTwo.set(0, 345);
@@ -111,6 +112,9 @@ void uiCreate::update() {
         *okSaveSelected = false;
         *pencilSelected = true;
         pencilButton.selected=false;
+        fontButton.toggle = false;
+        tableButton.toggle = false;
+        okSaveButton.toggle = false;
     }
     
     if (fontButton.selected) {
@@ -119,6 +123,9 @@ void uiCreate::update() {
         *okSaveSelected = false;
         *fontSelected = true;
         fontButton.selected=false;
+        pencilButton.toggle = false;
+        tableButton.toggle = false;
+        okSaveButton.toggle = false;
     }
     
     if (tableButton.selected) {
@@ -127,6 +134,9 @@ void uiCreate::update() {
         *okSaveSelected = false;
         *tableSelected = true;
         tableButton.selected=false;
+        pencilButton.toggle = false;
+        fontButton.toggle = false;
+        okSaveButton.toggle = false;
     }
     
     if (okSaveButton.selected) {
@@ -135,6 +145,9 @@ void uiCreate::update() {
         *tableSelected = false;
         *okSaveSelected = true;
         okSaveButton.selected=false;
+        pencilButton.toggle = false;
+        fontButton.toggle = false;
+        tableButton.toggle = false;
     }
 
     
@@ -170,11 +183,11 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
 //Tools
         
     if (*fontSelected) {
-        basicFont.drawString("text selected", 10, 500);
+//        basicFont.drawString("text selected", 10, 500);
     }
     
     if (*pencilSelected) {
-        basicFont.drawString("pencil selected", 10, 500);
+//        basicFont.drawString("pencil selected", 10, 500);
                 
         if (currentDrawing.size()>0) {
             for (int i = 1; i < currentDrawing.size(); i++) {
@@ -184,21 +197,21 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
     }
     
     if (*tableSelected) {
-        basicFont.drawString("table selected", 10, 500);
+//        basicFont.drawString("table selected", 10, 500);
     }
 
     if (*okSaveSelected) {
-        basicFont.drawString("ok save selected", 10, 500);
+//        basicFont.drawString("ok save selected", 10, 500);
     }
 
     
 //-----------------------------------------------
 //Tool Button UI
 
-    pencilButton.draw();
-    fontButton.draw();
-    tableButton.draw();
-    okSaveButton.draw();
+    pencilButton.drawToggle();
+    fontButton.drawToggle();
+    tableButton.drawToggle();
+    okSaveButton.drawToggle();
     
     ofSetHexColor(0x000000);
     
