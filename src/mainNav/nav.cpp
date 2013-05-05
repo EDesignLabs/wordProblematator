@@ -21,25 +21,29 @@ void nav::setup() {
     
     pos.set(0, 0);
     size.set(homeButton.getWidth()+20, homeButton.getHeight()+20);
-    offSet.set(25, 50);
+    offSet.set(25, 40);
     
     color.set(170, 170, 170);
     homeButtonRect.setup(pos, size, color);
 
+    raleigh.loadImage("images/raleigh.jpg");
+    sanFran.loadImage("images/SanFran.jpg");
+    gainesville.loadImage("images/gainesville.jpg");
+    
     ofPoint posTwo;
     posTwo.set(50, 50);
     size.set(625, 75);
-    mathButton.setup(posTwo, size, offSet, "Math Example", color);
+    mathButton.setup(posTwo, size, offSet, "Example #1", color);
 
     ofPoint posThree;
     posThree.set(50, 150);
     size.set(625, 75);
-    scienceButton.setup(posThree, size, offSet, "Science Example", color);
+    scienceButton.setup(posThree, size, offSet, "Example #2", color);
 
     ofPoint posFour;
     posThree.set(50, 250);
     size.set(625, 75);
-    historyButton.setup(posThree, size, offSet, "History Example", color);
+    historyButton.setup(posThree, size, offSet, "Example #3", color);
     
     navStateToc = true;
     navStateExercises = false;
@@ -102,9 +106,9 @@ void nav::update() {
 void nav::draw(ofTrueTypeFont& basicFont) {
 
     if (navStateToc) {
-        mathButton.draw(basicFont);
-        scienceButton.draw(basicFont);
-        historyButton.draw(basicFont);
+        mathButton.draw(basicFont, raleigh);
+        scienceButton.draw(basicFont, sanFran);
+        historyButton.draw(basicFont, gainesville);
     }
 
     if (navStateExercises) {

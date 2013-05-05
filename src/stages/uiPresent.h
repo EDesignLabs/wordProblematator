@@ -13,8 +13,10 @@
 
 #include "button.h"
 #include "drawing.h"
+#include "flagState.h"
 #include "image.h"
 #include "text.h"
+
 
 class uiPresent {
 	
@@ -23,7 +25,6 @@ public:
     uiPresent();
     ~uiPresent();
     
-    void setPoints(vector <drawing> theDrawings);
     void update();
     void draw(ofTrueTypeFont& basicFont);
     
@@ -34,7 +35,17 @@ public:
     void doubleTap(ofTouchEventArgs &touch);
     void exit();
     
+    void playData();
+    void setPoints(vector <drawing> theDrawings, vector<flagState> theFlagStates);
+    
+    
+    //how initial spots are drawn
+    drawing thisDrawing;
+
     //This is the drawing that is tracked and then pushed on the stack
+    vector <ofPoint> currentDrawing;
+    vector <drawing> markerThese;
+    
     vector <drawing> drawThese;
     
     int              startTime;
@@ -43,8 +54,23 @@ public:
     //uiPresent
     button*          scrubBox;
     ofPoint*         scrubLocation;
-    ofPoint*         scrubPos;
+    ofPoint          scrubPos;
+    vector <ofPoint> scrubFeedback;
     
+    
+    //for flagging process
+    vector<flagState> theFlagStates;
+    
+    //for playback and leaving reflections
+    button*         playPauseButton;
+    button*         markerButton;
+    
+    //shows where pointer last left
+    button*          currentPos;
+    
+    //used for playback
+    int           currentTime;
+    int           previousTime;
     
     
 };

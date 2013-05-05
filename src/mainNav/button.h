@@ -20,6 +20,7 @@ public:
     void draw();
     void drawToggle();
     void draw(ofTrueTypeFont& basicFont);
+    void draw(ofTrueTypeFont& basicFont, ofImage& basicImage);
     void drawNoColor();
     void drawNoColorWithImage();
     void drawNoColorWithImageToggle();

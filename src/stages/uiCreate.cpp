@@ -186,6 +186,8 @@ void uiCreate::draw(ofTrueTypeFont& basicFont) {
 //        basicFont.drawString("text selected", 10, 500);
     }
     
+    ofSetLineWidth(2.0);
+    
     if (*pencilSelected) {
 //        basicFont.drawString("pencil selected", 10, 500);
                 
