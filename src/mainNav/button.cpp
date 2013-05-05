@@ -123,7 +123,7 @@ void button::drawToggle() {
 void button::draw(ofTrueTypeFont& basicFont) {
     
     if (touching) ofSetColor(255, 0, 0,250);
-    else ofSetColor(thisColor);
+    else ofSetColor(thisColor, 120);
     ofRect(thisRectangle);
     
     ofSetColor(0, 0, 0);
@@ -134,6 +134,27 @@ void button::draw(ofTrueTypeFont& basicFont) {
     ofFill();
     
 }
+
+//------------------------------------------------------------------
+void button::draw(ofTrueTypeFont& basicFont, ofImage& basicImage) {
+    
+    ofEnableAlphaBlending();
+    if (touching) ofSetColor(255, 0, 0,250);
+    else ofSetColor(thisColor, 120);
+    ofRect(thisRectangle);
+    
+    basicImage.draw(pos.x, pos.y);
+    
+    ofSetColor(0, 0, 0);
+    basicFont.drawString(thisString, thisRectangle.x+offSet.x, thisRectangle.y+offSet.y);
+    
+    ofNoFill();
+    ofRect(thisRectangle);
+    ofFill();
+    
+    ofDisableAlphaBlending();
+}
+
 
 //------------------------------------------------------------------
 void button::drawNoColor() {

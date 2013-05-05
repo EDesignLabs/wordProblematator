@@ -33,6 +33,10 @@ class nav {
         button             homeButtonRect;
         ofImage            homeButton;
     
+        ofImage raleigh;
+        ofImage sanFran;
+        ofImage gainesville;
+    
         exercisesMath*         mathExercises;
 
         bool    navStateToc;

@@ -46,6 +46,7 @@ class problemMathOne {
         uiPresent*  present;
     
         string      theText;
+        ofImage     grid;
     
 //-----------------------------------------------
 //UI State
