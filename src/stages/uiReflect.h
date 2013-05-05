@@ -13,8 +13,10 @@
 
 #include "button.h"
 #include "drawing.h"
+#include "flagState.h"
 #include "image.h"
 #include "text.h"
+
 
 class uiReflect {
 	
@@ -35,7 +37,6 @@ class uiReflect {
         void exit();
 
         void playData();
-        void flagReflection();
     
         //This is the drawing that is tracked and then pushed on the stack
         vector <drawing> drawThese;
@@ -48,6 +49,11 @@ class uiReflect {
         ofPoint*         scrubLocation;
         ofPoint          scrubPos;
         vector <ofPoint> scrubFeedback;
+    
+    
+        //for flagging process
+        vector<flagState> theFlagStates;
+        flagState         theFlagState;
     
         //for playback and leaving reflections
         button*         playPauseButton;

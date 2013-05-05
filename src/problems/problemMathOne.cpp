@@ -75,7 +75,8 @@ problemMathOne::problemMathOne() {
     navStatePresent = false;
     navStateQuestion = false;
     
-
+    grid.loadImage("images/grid2.jpg");
+    
 //-----------------------------------------------
 //poor man's feedback
     
@@ -124,7 +125,7 @@ void problemMathOne::update() {
         presentButton.selected=false;
 
         //set value of drawing
-        present->setPoints(create->drawThese);
+        present->setPoints(create->drawThese, reflect->theFlagStates);
 
     }
     
@@ -181,6 +182,11 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
 //poor man's feedback
     
     ofRect(feedbackBrickPos.x, feedbackBrickPos.y, 311, 5);
+
+    ofEnableAlphaBlending();
+    ofSetColor(255, 255, 255);
+    grid.draw(175, ofGetHeight()/3+50);
+    ofDisableAlphaBlending();
     
 //-----------------------------------------------
 //actual state
@@ -191,10 +197,9 @@ void problemMathOne::draw(ofTrueTypeFont& basicFont) {
     
 //-----------------------------------------------
 //The Question
-    
-    basicFont.drawString(theText, 10, 100);
 
-    
+    ofSetColor(0, 0, 0);
+    basicFont.drawString(theText, 10, 100);
 //-----------------------------------------------
 //Feedback
     
